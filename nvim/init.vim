@@ -14,12 +14,8 @@ let oceanic_next_terminal_bold = 1
 " NerdTree
 let NERDTreeShowHidden = 1
 let NERDTreeDirArrows = 0
-" let NERDTreeDirArrowExpandable = '▷'
-" let NERDTreeDirArrowCollapsible = '▼'
 map \           :NERDTreeToggle<CR> " File tree browser
 map \|          :NERDTreeFind<CR> " File tree browser showing current file - pipe (shift-backslash)
-" open nerdtree by default
-autocmd VimEnter + NERDTree
 
 " Airline
 let airline#extensions#tabline#enabled = 1
