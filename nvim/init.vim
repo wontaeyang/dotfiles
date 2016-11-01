@@ -7,6 +7,7 @@ set ttyfast                 " faster redraw
 set wildmode=list:longest   " complete files like a shell
 set wildmenu                " enhanced command line completion
 set showcmd                 " show incomplete commands
+set tabstop=2 shiftwidth=2 expandtab
 
 " Theme setup
 colorscheme OceanicNext
@@ -28,6 +29,7 @@ let airline_theme='oceanicnext'
 
 "FZF
 nnoremap <c-t> :FZF<cr>
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Undo tree
 nnoremap <c-u> :UndotreeToggle<cr>
