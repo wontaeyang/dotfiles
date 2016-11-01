@@ -17,6 +17,10 @@ Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' " fuzzy file finder and so m
 Plug 'ggreer/the_silver_searcher' " silver searcher, faster than :ack
 Plug 'mbbill/undotree' " undo navigation
 
+" test
+Plug 'janko-m/vim-test'
+Plug 'airblade/vim-gitgutter'
+
 " utilities
 Plug 'tpope/vim-commentary' " comment stuff out
 Plug 'tpope/vim-endwise' " automatically add end in ruby
