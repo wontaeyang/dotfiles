@@ -97,6 +97,7 @@ set diffopt+=vertical
 " Theme setup
 colorscheme OceanicNext
 set termguicolors
+
 " set background=dark
 let g:oceanic_next_terminal_italic = 1
 let g:oceanic_next_terminal_bold = 1
@@ -106,11 +107,25 @@ let NERDTreeShowHidden = 1
 let NERDTreeDirArrows = 0
 map \           :NERDTreeToggle<CR> " File tree browser
 map \|          :NERDTreeFind<CR> " File tree browser showing current file - pipe (shift-backslash)
+autocmd FileType nerdtree noremap <buffer> <Tab> <nop> " prevent buffer change within nerdtree
+autocmd FileType nerdtree noremap <buffer> <S-Tab> <nop> " prevent buffer change within nerdtree
 
 " Airline
 let g:airline_powerline_fonts = 1
-let airline#extensions#tabline#enabled = 1
-let airline_theme='oceanicnext'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='oceanicnext'
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 
 "FZF
 nnoremap <c-t> :FZF<cr>
@@ -118,3 +133,6 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Undo tree
 nnoremap <c-u> :UndotreeToggle<cr>
+
+" Terminal
+autocmd TermOpen * set bufhidden=hide "prevent closing of terminal on buffer switch
