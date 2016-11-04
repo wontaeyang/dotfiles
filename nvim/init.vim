@@ -141,8 +141,15 @@ autocmd TermOpen * set bufhidden=hide "prevent closing of terminal on buffer swi
 nnoremap <C-/> gcc
 
 " Tests
+let test#strategy = "neovim"
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
+
+" Multiple cursor key mappings
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
