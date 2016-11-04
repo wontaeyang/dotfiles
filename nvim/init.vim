@@ -136,3 +136,13 @@ nnoremap <c-u> :UndotreeToggle<cr>
 
 " Terminal
 autocmd TermOpen * set bufhidden=hide "prevent closing of terminal on buffer switch
+
+" Comment
+nnoremap <C-/> gcc
+
+" Tests
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
