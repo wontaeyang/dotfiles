@@ -1,8 +1,6 @@
 source ~/.config/nvim/plugins.vim
 
 " General
-
-
 let mapleader = " " "remap leader as space
 
 set encoding=utf-8
@@ -31,7 +29,7 @@ if $TERM_PROGRAM =~ "iTerm" " for iterm2 with vim settings
 endif
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " neovim specific cursor change setting
 
-" Numbers
+" Gutter numbers
 set number
 set numberwidth=3
 set foldcolumn=1
@@ -77,13 +75,6 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
-
-" vim-test mappings
-nnoremap <silent> <Leader>t :TestFile<CR>
-nnoremap <silent> <Leader>s :TestNearest<CR>
-nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>a :TestSuite<CR>
-nnoremap <silent> <leader>gt :TestVisit<CR>
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -158,8 +149,8 @@ nnoremap <C-/> gcc
 " Tests
 let test#strategy = "neovim"
 nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>a :TestFile<CR>
+" nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
