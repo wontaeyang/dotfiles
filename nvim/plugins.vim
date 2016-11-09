@@ -4,8 +4,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'dracula/vim'
 Plug 'freeo/vim-kalisi'
 Plug 'mhartington/oceanic-next'
-Plug 'dhruvasagar/vim-railscasts-theme'
-Plug 'flazz/vim-colorschemes'
 
 " status bar
 Plug 'vim-airline/vim-airline' " fancy statusline

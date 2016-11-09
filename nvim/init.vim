@@ -39,6 +39,9 @@ set list listchars=tab:»·,trail:·,nbsp:·
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
+" Remove all trailing white spaces on save
+autocmd BufWritePre * %s/\s\+$//e
+
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
