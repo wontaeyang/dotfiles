@@ -161,7 +161,7 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " ctrl-j/k to move lines up and down (vim-unimpaired)
-nmap <C-k> [e
-nmap <C-j> ]e
-vmap <C-k> [egv
-vmap <C-j> ]egv
+" nmap <C-k> [e
+" nmap <C-j> ]e
+" vmap <C-k> [egv
+" vmap <C-j> ]egv
