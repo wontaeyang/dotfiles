@@ -1,25 +1,27 @@
 call plug#begin('~/.config/nvim/plugged')
 
-" colorschemes
+" Colorschemes
 Plug 'dracula/vim'
 Plug 'freeo/vim-kalisi'
 Plug 'mhartington/oceanic-next'
 
-" status bar
+" Status bar
 Plug 'vim-airline/vim-airline' " fancy statusline
 Plug 'vim-airline/vim-airline-themes' " themes for vim-airline
 
-" search
+" Search
 Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin' " NERDtree for file nav
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' " fuzzy file finder and so much more
 Plug 'ggreer/the_silver_searcher' " silver searcher, faster than :ack
 Plug 'mbbill/undotree' " undo navigation
 
-" test
+" Test
 Plug 'janko-m/vim-test'
+
+" Visual
 Plug 'airblade/vim-gitgutter'
 
-" utilities
+" Utilities
 Plug 'terryma/vim-multiple-cursors' " multiple cursors like sublime
 Plug 'tpope/vim-commentary' " comment stuff out
 Plug 'tpope/vim-endwise' " automatically add end in ruby
