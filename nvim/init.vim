@@ -135,7 +135,8 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 
 "FZF
 nnoremap <c-t> :FZF<cr>
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+nnoremap <c-f> :Ag<cr>
+" let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Undo tree
 nnoremap <c-u> :UndotreeToggle<cr>
