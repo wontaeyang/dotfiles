@@ -22,6 +22,7 @@ Plug 'janko-m/vim-test'
 Plug 'airblade/vim-gitgutter'
 
 " Utilities
+Plug 'tpope/vim-surround' " change surrounding quotes or tags
 Plug 'terryma/vim-multiple-cursors' " multiple cursors like sublime
 Plug 'tpope/vim-commentary' " comment stuff out
 Plug 'tpope/vim-endwise' " automatically add end in ruby
