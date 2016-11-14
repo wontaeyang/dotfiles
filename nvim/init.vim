@@ -21,8 +21,9 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
 " Cursor settings
-autocmd InsertEnter * set cul
-autocmd InsertLeave * set nocul
+set cul
+" autocmd InsertEnter * set cul
+" autocmd InsertLeave * set nocul
 if $TERM_PROGRAM =~ "iTerm" " for iterm2 with vim settings
     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
