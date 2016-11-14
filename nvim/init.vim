@@ -33,7 +33,11 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " neovim specific cursor change setting
 set number
 set numberwidth=3
 set foldcolumn=1
-set relativenumber number
+" set relativenumber number
+hi CursorLineNR cterm=bold
+augroup CLNRSet
+  autocmd! ColorScheme * hi CursorLineNR cterm=bold guifg=#ec5f67
+augroup END
 
 " Tab settings
 set tabstop=2
