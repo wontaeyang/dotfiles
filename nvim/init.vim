@@ -33,6 +33,7 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " neovim specific cursor change setting
 set number
 set numberwidth=3
 set foldcolumn=1
+set relativenumber number
 
 " Tab settings
 set tabstop=2
@@ -136,7 +137,7 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 "FZF
 nnoremap <c-t> :FZF<cr>
 nnoremap <c-f> :Ag<cr>
-" let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Undo tree
 nnoremap <c-u> :UndotreeToggle<cr>
