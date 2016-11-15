@@ -24,4 +24,6 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 
 7. brew install the_silver_searcher
 
+8. gem install rubocop
+
 8. `nvim +PlugInstall`

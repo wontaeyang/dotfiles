@@ -172,3 +172,7 @@ let g:multi_cursor_quit_key='<Esc>'
 " nmap <C-j> ]e
 " vmap <C-k> [egv
 " vmap <C-j> ]egv
+
+
+" Neomake settings
+autocmd! BufWritePost * Neomake
