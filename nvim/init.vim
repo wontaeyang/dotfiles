@@ -20,6 +20,9 @@ set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
+" Neomake settings
+autocmd! BufWritePost * Neomake
+
 " Cursor settings
 set cul
 " autocmd InsertEnter * set cul
@@ -34,11 +37,7 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " neovim specific cursor change setting
 set number
 set numberwidth=3
 set foldcolumn=1
-" set relativenumber number
-hi CursorLineNR cterm=bold
-augroup CLNRSet
-  autocmd! ColorScheme * hi CursorLineNR cterm=bold guifg=#ec5f67
-augroup END
+set relativenumber number
 
 " Tab settings
 set tabstop=2
@@ -173,6 +172,5 @@ let g:multi_cursor_quit_key='<Esc>'
 " vmap <C-k> [egv
 " vmap <C-j> ]egv
 
-
-" Neomake settings
-autocmd! BufWritePost * Neomake
+" Current line number highlight ( need to be at the end )
+hi CursorLineNR cterm=bold guifg=#ec5f67
