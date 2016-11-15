@@ -5,33 +5,31 @@ let mapleader = " " "remap leader as space
 
 set encoding=utf-8
 set nowrap
-set ttyfast                 " faster redraw
-set wildmode=list:longest   " complete files like a shell
-set wildmenu                " enhanced command line completion
-
-set backspace=2   " Backspace deletes like most programs in insert mode
+set ttyfast                 " Faster redraw
+set wildmenu                " Enhanced command line completion
+set backspace=2             " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
-set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set noswapfile              " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 set history=50
-set ruler         " show the cursor position all the time
-set showcmd       " display incomplete commands
-set incsearch     " do incremental searching
-set laststatus=2  " Always display the status line
-set autowrite     " Automatically :write before running commands
+set ruler                   " Show the cursor position all the time
+set showcmd                 " Display incomplete commands
+set incsearch               " Do incremental searching
+set laststatus=2            " Always display the status line
+set autowrite               " Automatically :write before running commands
+set autoindent              " Indentation
+set nojoinspaces            " Use one space, not two, after punctuation.
+set splitbelow              " Open new split panes to right and bottom, which feels more natural
+set splitright
+set diffopt+=vertical       " Always use vertical diffs
+set list listchars=tab:»·,trail:·,nbsp:· " Display trailing white spaces
 
-" Neomake settings
-autocmd! BufWritePost * Neomake
-
-" Cursor settings
-set cul
-" autocmd InsertEnter * set cul
-" autocmd InsertLeave * set nocul
-if $TERM_PROGRAM =~ "iTerm" " for iterm2 with vim settings
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
-endif
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " neovim specific cursor change setting
+" Theme setup
+colorscheme OceanicNext
+set termguicolors
+" set background=dark
+let g:oceanic_next_terminal_italic = 1
+let g:oceanic_next_terminal_bold = 1
 
 " Gutter numbers
 set number
@@ -45,14 +43,16 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
 
-" Indentation
-set autoindent
-
-" Use one space, not two, after punctuation.
-set nojoinspaces
+" Cursor settings
+set cul
+" autocmd InsertEnter * set cul
+" autocmd InsertLeave * set nocul
+if $TERM_PROGRAM =~ "iTerm" " for iterm2 with vim settings
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " neovim specific cursor change setting
 
 " Remove all trailing white spaces on save
 autocmd BufWritePre * %s/\s\+$//e
@@ -81,9 +81,6 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -101,17 +98,6 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 " Buffer movement
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
-
-" Always use vertical diffs
-set diffopt+=vertical
-
-" Theme setup
-colorscheme OceanicNext
-set termguicolors
-
-" set background=dark
-let g:oceanic_next_terminal_italic = 1
-let g:oceanic_next_terminal_bold = 1
 
 " NerdTree
 let NERDTreeShowHidden = 1
@@ -150,7 +136,7 @@ nnoremap <c-u> :UndotreeToggle<cr>
 autocmd TermOpen * set bufhidden=hide "prevent closing of terminal on buffer switch
 
 " Comment
-nnoremap <C-/> gcc
+nnoremap <c-/> gcc
 
 " Tests
 let test#strategy = "neovim"
@@ -167,10 +153,13 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " ctrl-j/k to move lines up and down (vim-unimpaired)
-" nmap <C-k> [e
-" nmap <C-j> ]e
+nmap <leader>k [e
+nmap <leader>j ]e
 " vmap <C-k> [egv
 " vmap <C-j> ]egv
+
+" Neomake settings
+autocmd! BufWritePost * Neomake
 
 " Current line number highlight ( need to be at the end )
 hi CursorLineNR cterm=bold guifg=#ec5f67
