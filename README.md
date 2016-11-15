@@ -27,3 +27,10 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 8. gem install rubocop
 
 8. `nvim +PlugInstall`
+
+
+## to-do
+
+1. add .bash_profile
+
+2. add .bash_rc
