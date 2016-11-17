@@ -35,7 +35,7 @@ let g:oceanic_next_terminal_bold = 1
 set number
 set numberwidth=3
 set foldcolumn=1
-set relativenumber number
+set relativenumber
 
 " Tab settings
 set tabstop=2
