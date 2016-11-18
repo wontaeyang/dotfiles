@@ -26,6 +26,7 @@ set list listchars=tab:»·,trail:·,nbsp:· " Display trailing white spaces
 
 " Theme setup
 colorscheme OceanicNext
+" colorscheme Dracula
 set termguicolors
 " set background=dark
 let g:oceanic_next_terminal_italic = 1
