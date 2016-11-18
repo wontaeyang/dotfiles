@@ -40,5 +40,6 @@ Plug 'benekastah/neomake' " neovim replacement for syntastic using neovim's job 
 Plug 'tpope/vim-fugitive' " amazing git wrapper for vim
 Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
 Plug 'AndrewRadev/splitjoin.vim' " single/multi line code handler: gS - split one line into multiple, gJ - combine multiple lines into one
+Plug 'pbrisbin/vim-mkdir'  " automatically create directories when editing a new file
 
 call plug#end()
