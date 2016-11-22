@@ -36,14 +36,13 @@ let g:oceanic_next_terminal_bold = 1
 set number
 set numberwidth=3
 set foldcolumn=1
-set relativenumber
+" set relativenumber
 
 " Tab settings
 set tabstop=2
 set shiftwidth=2
 set shiftround
 set expandtab
-
 
 " Cursor settings
 set cul
@@ -126,8 +125,8 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
 "FZF
-nnoremap <c-t> :FZF<cr>
-nnoremap <c-f> :Ag<cr>
+nnoremap <C-t> :FZF<CR>
+nnoremap <C-f> :Ag<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Undo tree
@@ -161,6 +160,14 @@ nmap <leader>j ]e
 
 " Neomake settings
 autocmd! BufWritePost * Neomake
+
+" Escape save settings
+inoremap <esc> <esc>:w<CR>
+autocmd InsertLeave * nnoremap <esc> <esc>:w<CR>
+
+" Shortcut for quit
+noremap <leader>q :wq<CR>
+noremap <leader>w :bd<CR>
 
 " Current line number highlight ( need to be at the end )
 hi CursorLineNR cterm=bold guifg=#ec5f67
