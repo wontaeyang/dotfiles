@@ -3,6 +3,7 @@ source ~/.config/nvim/plugins.vim
 " General
 let mapleader = " " "remap leader as space
 
+set nocompatible            " do not support vi
 set encoding=utf-8
 set nowrap
 set ttyfast                 " Faster redraw
