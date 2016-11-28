@@ -165,13 +165,13 @@ nmap <leader>j ]e
 autocmd! BufWritePost * Neomake
 
 " Escape save settings
-noremap <esc> <esc>:w<CR>
 inoremap <esc> <esc>:w<CR>
 autocmd InsertLeave * nnoremap <esc> <esc>:w<CR>
 
 " Shortcut for quit
 noremap <leader>q :wq<CR>
-noremap <leader>w :bd<CR>
+noremap <leader>w :w<CR>
+noremap <leader>d :bd<CR>
 
 " Current line number highlight ( need to be at the end )
 hi CursorLineNR cterm=bold guifg=#ec5f67
