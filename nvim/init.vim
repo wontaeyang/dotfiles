@@ -126,9 +126,11 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
 "FZF
-nnoremap <C-t> :FZF<CR>
+nnoremap <C-t> :Files<CR>
 nnoremap <C-f> :Ag<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let g:fzf_files_options =
+  \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 
 " Undo tree
 nnoremap <c-u> :UndotreeToggle<cr>
@@ -137,7 +139,7 @@ nnoremap <c-u> :UndotreeToggle<cr>
 autocmd TermOpen * set bufhidden=hide "prevent closing of terminal on buffer switch
 
 " Comment
-nnoremap <c-/> gcc
+noremap <C-_> :Commentary<cr>
 
 " Tests
 let test#strategy = "neovim"
@@ -163,6 +165,7 @@ nmap <leader>j ]e
 autocmd! BufWritePost * Neomake
 
 " Escape save settings
+noremap <esc> <esc>:w<CR>
 inoremap <esc> <esc>:w<CR>
 autocmd InsertLeave * nnoremap <esc> <esc>:w<CR>
 
