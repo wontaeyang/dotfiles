@@ -3,6 +3,7 @@ source ~/.config/nvim/plugins.vim
 " General
 let mapleader = " " "remap leader as space
 
+set hidden                  " persist undo between buffer switches
 set nocompatible            " do not support vi
 set encoding=utf-8
 set nowrap
@@ -170,8 +171,7 @@ autocmd InsertLeave * nnoremap <esc> <esc>:w<CR>
 
 " Shortcut for quit
 noremap <leader>q :wq<CR>
-noremap <leader>w :w<CR>
-noremap <leader>d :bd<CR>
+noremap <leader>w :w<CR>:bd<CR>
 
 " Current line number highlight ( need to be at the end )
 hi CursorLineNR cterm=bold guifg=#ec5f67
