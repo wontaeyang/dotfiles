@@ -74,15 +74,11 @@ endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <S-Tab> <c-n>
 
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
-
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
-
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -102,12 +98,12 @@ nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
 " NerdTree
-let NERDTreeShowHidden = 1
-let NERDTreeDirArrows = 0
-map \           :NERDTreeToggle<CR> " File tree browser
-map \|          :NERDTreeFind<CR> " File tree browser showing current file - pipe (shift-backslash)
-autocmd FileType nerdtree noremap <buffer> <Tab> <nop> " prevent buffer change within nerdtree
-autocmd FileType nerdtree noremap <buffer> <S-Tab> <nop> " prevent buffer change within nerdtree
+" let NERDTreeShowHidden = 1
+" let NERDTreeDirArrows = 0
+" map \           :NERDTreeToggle<CR> " File tree browser
+" map \|          :NERDTreeFind<CR> " File tree browser showing current file - pipe (shift-backslash)
+" autocmd FileType nerdtree noremap <buffer> <Tab> <nop> " prevent buffer change within nerdtree
+" autocmd FileType nerdtree noremap <buffer> <S-Tab> <nop> " prevent buffer change within nerdtree
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -161,6 +157,9 @@ nmap <leader>k [e
 nmap <leader>j ]e
 " vmap <C-k> [egv
 " vmap <C-j> ]egv
+
+"edit command with current folders populated
+map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Neomake settings
 autocmd! BufWritePost * Neomake
