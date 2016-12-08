@@ -34,8 +34,8 @@ Plug 'tpope/vim-ragtag' " endings for html, xml, etc. - ehances surround
 Plug 'qpkorr/vim-bufkill' "prevent closing window when deleting buffer
 
 " to be reviewed
-" Plug 'christoomey/magictags' " to be adjusted before enabled
-" Plug 'ConradIrwin/vim-bracketed-paste' "better pasting
+Plug 'christoomey/magictags' " to be adjusted before enabled
+Plug 'ConradIrwin/vim-bracketed-paste' "better pasting
 
 " Utilities
 Plug 'terryma/vim-multiple-cursors' " multiple cursors like sublime
