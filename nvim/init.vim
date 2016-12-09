@@ -28,9 +28,7 @@ set list listchars=tab:»·,trail:·,nbsp:· " Display trailing white spaces
 
 " Theme setup
 colorscheme OceanicNext
-" colorscheme Dracula
 set termguicolors
-" set background=dark
 let g:oceanic_next_terminal_italic = 1
 let g:oceanic_next_terminal_bold = 1
 
@@ -124,7 +122,7 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 
 "FZF
 nnoremap <C-t> :Files<CR>
-nnoremap <C-f> :Ag<CR>
+" nnoremap <C-f> :Ag<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:fzf_files_options =
   \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
