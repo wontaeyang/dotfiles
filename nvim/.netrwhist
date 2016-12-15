@@ -1,10 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/wontaeyang/development/vhx/crystal/app/models/fulfillment'
-let g:netrw_dirhist_2='/Users/wontaeyang/development/vhx/crystal'
-let g:netrw_dirhist_3='/Users/wontaeyang/development/vhx/crystal/app'
-let g:netrw_dirhist_4='/Users/wontaeyang/development/vhx/crystal/app/controllers'
-let g:netrw_dirhist_5='/Users/wontaeyang/development/vhx/crystal/app/controllers/auth'
-let g:netrw_dirhist_6='/Users/wontaeyang/development/vhx/crystal'
-let g:netrw_dirhist_7='/Users/wontaeyang/development/vhx/crystal/spec'
-let g:netrw_dirhist_8='/Users/wontaeyang/development/vhx/crystal/spec/factories'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/wontaeyang/development/vhx/crystal'
+let g:netrw_dirhist_2='/Users/wontaeyang/development/vhx/crystal/app'
+let g:netrw_dirhist_3='/Users/wontaeyang/development/vhx/crystal/app/views'
+let g:netrw_dirhist_4='/Users/wontaeyang/development/vhx/crystal/app/views/settings'
+let g:netrw_dirhist_5='/Users/wontaeyang/development/vhx/crystal/app/views/settings/purchases'
