@@ -32,8 +32,6 @@ Plug 'tpope/vim-endwise' " automatically add end in ruby
 Plug 'tpope/vim-ragtag' " endings for html, xml, etc. - ehances surround
 Plug 'qpkorr/vim-bufkill' "prevent closing window when deleting buffer
 Plug 'tpope/vim-eunuch' " convenient deleting moving and renameing files
-
-" to be reviewed
 Plug 'christoomey/magictags' " to be adjusted before enabled
 Plug 'ConradIrwin/vim-bracketed-paste' "better pasting
 
