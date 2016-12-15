@@ -125,7 +125,7 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nnoremap <C-t> :Files<CR>
 " nnoremap <C-f> :Ag<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-let $FZF_DEFAULT_OPTS = "--inline-info --color=dark"
+let $FZF_DEFAULT_OPTS = "--inline-info"
 autocmd VimEnter * command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>,
   \                 <bang>0 ? fzf#vim#with_preview('up:60%')
