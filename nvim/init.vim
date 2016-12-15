@@ -25,6 +25,7 @@ set splitbelow              " Open new split panes to right and bottom, which fe
 set splitright
 set diffopt+=vertical       " Always use vertical diffs
 set list listchars=tab:»·,trail:·,nbsp:· " Display trailing white spaces
+set clipboard+=unnamedplus  " Always use clipboard on yank and passte
 
 " Theme setup
 colorscheme OceanicNext
@@ -124,8 +125,12 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nnoremap <C-t> :Files<CR>
 " nnoremap <C-f> :Ag<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-let g:fzf_files_options =
-  \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+let $FZF_DEFAULT_OPTS = "--inline-info --color=dark"
+autocmd VimEnter * command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
 
 " Undo tree
 nnoremap <c-u> :UndotreeToggle<cr>
