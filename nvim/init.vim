@@ -28,7 +28,9 @@ set list listchars=tab:»·,trail:·,nbsp:· " Display trailing white spaces
 set clipboard+=unnamedplus  " Always use clipboard on yank and passte
 
 " Theme setup
+syntax enable
 colorscheme OceanicNext
+" colorscheme dracula
 set termguicolors
 let g:oceanic_next_terminal_italic = 1
 let g:oceanic_next_terminal_bold = 1
@@ -125,7 +127,6 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nnoremap <C-t> :Files<CR>
 " nnoremap <C-f> :Ag<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-let $FZF_DEFAULT_OPTS = "--inline-info"
 autocmd VimEnter * command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>,
   \                 <bang>0 ? fzf#vim#with_preview('up:60%')

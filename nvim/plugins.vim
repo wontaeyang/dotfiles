@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'dracula/vim'
 Plug 'freeo/vim-kalisi'
 Plug 'mhartington/oceanic-next'
+Plug 'dracula/vim'
 
 " Status bar
 Plug 'vim-airline/vim-airline' " fancy statusline
