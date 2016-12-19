@@ -35,9 +35,9 @@ Plug 'qpkorr/vim-bufkill' "prevent closing window when deleting buffer
 Plug 'tpope/vim-eunuch' " convenient deleting moving and renameing files
 Plug 'christoomey/magictags' " to be adjusted before enabled
 Plug 'ConradIrwin/vim-bracketed-paste' "better pasting
+Plug 'jiangmiao/auto-pairs' " auto pairing of quotes and brackets
 
 " Utilities
-Plug 'terryma/vim-multiple-cursors' " multiple cursors like sublime
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
 Plug 'tpope/vim-repeat' " enables repeating other supported plugins with the . command
 Plug 'benekastah/neomake' " neovim replacement for syntastic using neovim's job control functonality

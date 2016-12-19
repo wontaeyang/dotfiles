@@ -19,42 +19,37 @@ set showcmd                 " Display incomplete commands
 set incsearch               " Do incremental searching
 set laststatus=2            " Always display the status line
 set autowrite               " Automatically :write before running commands
-set autoindent              " Indentation
 set nojoinspaces            " Use one space, not two, after punctuation.
 set splitbelow              " Open new split panes to right and bottom, which feels more natural
 set splitright
 set diffopt+=vertical       " Always use vertical diffs
 set list listchars=tab:»·,trail:·,nbsp:· " Display trailing white spaces
-set clipboard+=unnamedplus  " Always use clipboard on yank and passte
+set clipboard+=unnamedplus  " Always use clipboard on yank and paste
 
 " Theme setup
-syntax enable
 colorscheme OceanicNext
-" colorscheme dracula
 set termguicolors
-let g:oceanic_next_terminal_italic = 1
-let g:oceanic_next_terminal_bold = 1
+
+" vim ruby setup
+syntax on
+filetype on
+filetype indent on
+filetype plugin on
 
 " Gutter numbers
-set number
-set numberwidth=3
 set foldcolumn=1
 set relativenumber
 
 " Tab settings
 set tabstop=2
 set shiftwidth=2
+set softtabstop=2
 set shiftround
 set expandtab
+set autoindent              " Indentation
 
 " Cursor settings
 set cul
-" autocmd InsertEnter * set cul
-" autocmd InsertLeave * set nocul
-if $TERM_PROGRAM =~ "iTerm" " for iterm2 with vim settings
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
-endif
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " neovim specific cursor change setting
 
 " Remove all trailing white spaces on save
@@ -150,12 +145,6 @@ nmap <silent> <leader>a :TestFile<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
-" Multiple cursor key mappings
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-
 " ctrl-j/k to move lines up and down (vim-unimpaired)
 nmap <leader>k [e
 nmap <leader>j ]e
@@ -167,15 +156,6 @@ map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Neomake settings
 autocmd! BufWritePost * Neomake
-
-" Escape save settings
-" nnoremap <esc> <esc>:w<CR>
-" inoremap <esc> <esc>:w<CR>
-" autocmd InsertLeave * nnoremap <esc> <esc>:w<CR>
-
-" Shortcut for quit
-" noremap <leader>q :wq<CR>
-" noremap <leader>w :w<CR>:bd<CR>
 
 " Current line number highlight ( need to be at the end )
 hi CursorLineNR cterm=bold guifg=#ec5f67
