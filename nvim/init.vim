@@ -43,7 +43,6 @@ set relativenumber          " Show relative line number
 " Tab / indentation settings
 set tabstop=2               " Tab is two spaces
 set shiftwidth=2
-set softtabstop=2
 set shiftround
 set expandtab
 set autoindent              " Enable auto indentation
