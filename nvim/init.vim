@@ -9,6 +9,7 @@ set encoding=utf-8
 set nowrap                  " Do not wrap overflowing lines
 set ttyfast                 " Faster redraw
 set wildmenu                " Enhanced command line completion
+set wildmode=list:longest,list:full  " Tab completion preview settings
 set backspace=2             " Backspace deletes like most programs in insert mode
 set nobackup                " Avoid writing backup
 set nowritebackup           " Write to original file instead of backup
@@ -32,22 +33,22 @@ set termguicolors
 
 " vim ruby setup
 syntax on
-filetype on
-filetype indent on
-filetype plugin on
+filetype plugin indent on
 
 " Gutter numbers
-set number
+set number                  " Display current line number
 set foldcolumn=1
-set relativenumber
+set relativenumber          " Show relative line number
 
-" Tab settings
-set tabstop=2
+" Tab / indentation settings
+set tabstop=2               " Tab is two spaces
 set shiftwidth=2
 set softtabstop=2
 set shiftround
 set expandtab
-set autoindent              " Indentation
+set autoindent              " Enable auto indentation
+set copyindent              " Copy previous indentation on autocomplete
+
 
 " Cursor settings
 set cul
@@ -55,15 +56,6 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " neovim specific cursor change setting
 
 " Remove all trailing white spaces on save
 autocmd BufWritePre * %s/\s\+$//e
-
-" Tab completion
-set wildmode=list:longest,list:full
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
