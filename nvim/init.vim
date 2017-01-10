@@ -7,7 +7,7 @@ set hidden                  " persist undo between buffer switches
 set nocompatible            " do not support vi
 set encoding=utf-8
 set nowrap                  " Do not wrap overflowing lines
-set ttyfast                 " Faster redraw
+set lazyredraw              " Faster redraw
 set wildmenu                " Enhanced command line completion
 set wildmode=list:longest,list:full  " Tab completion preview settings
 set backspace=2             " Backspace deletes like most programs in insert mode
@@ -51,6 +51,7 @@ set copyindent              " Copy previous indentation on autocomplete
 
 " Cursor settings
 set cul
+" autocmd InsertEnter,InsertLeave * set cul!
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " neovim specific cursor change setting
 
 " Remove all trailing white spaces on save
@@ -100,8 +101,6 @@ autocmd VimEnter * command! -bang -nargs=* Ag
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
   \                 <bang>0)
 
-" Undo tree
-nnoremap <c-u> :UndotreeToggle<cr>
 
 " Terminal
 autocmd TermOpen * set bufhidden=hide "prevent closing of terminal on buffer switch
@@ -119,6 +118,10 @@ nmap <silent> <leader>g :TestVisit<CR>
 
 "edit command with current folders populated
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+"Split Join
+map <leader>s gS<CR>
+map <leader>j gJ<CR>
 
 " Neomake settings
 autocmd! BufWritePost * Neomake
