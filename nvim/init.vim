@@ -15,7 +15,6 @@ set nobackup                " Avoid writing backup
 set nowritebackup           " Write to original file instead of backup
 set noswapfile              " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 set history=100             " Set undo history depth
-set ruler                   " Show the cursor position all the time
 set showcmd                 " Display incomplete commands
 set incsearch               " Do incremental searching
 set laststatus=2            " Always display the status line
@@ -27,13 +26,13 @@ set diffopt+=vertical       " Always use vertical diffs
 set list listchars=tab:»·,trail:·,nbsp:· " Display trailing white spaces
 set clipboard+=unnamedplus  " Always use clipboard on yank and paste
 
-" Theme setup
-colorscheme OceanicNext
-set termguicolors
-
 " vim ruby setup
-syntax on
+syntax enable
 filetype plugin indent on
+
+" Theme setup
+" set termguicolors
+colorscheme OceanicNext
 
 " Gutter numbers
 set number                  " Display current line number
