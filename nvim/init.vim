@@ -31,7 +31,7 @@ syntax enable
 filetype plugin indent on
 
 " Theme setup
-" set termguicolors
+set termguicolors
 colorscheme OceanicNext
 
 " Gutter numbers
