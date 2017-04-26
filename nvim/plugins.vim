@@ -1,7 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Colorschemes
-Plug 'dracula/vim'
 Plug 'mhartington/oceanic-next'
 Plug 'dracula/vim'
 
@@ -21,6 +20,7 @@ Plug 'airblade/vim-gitgutter'
 
 " Ruby / Rails
 Plug 'tpope/vim-rails'
+Plug 'elixir-lang/vim-elixir'
 
 " Editing
 Plug 'tpope/vim-surround' " change surrounding quotes or tags

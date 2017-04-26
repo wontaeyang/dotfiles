@@ -4,7 +4,7 @@ source ~/.config/nvim/plugins.vim
 let mapleader = " " "remap leader as space
 
 set hidden                  " persist undo between buffer switches
-set nocompatible            " do not support vi
+set nocompatible            " do not support vi mode
 set encoding=utf-8
 set nowrap                  " Do not wrap overflowing lines
 set lazyredraw              " Faster redraw
@@ -37,7 +37,7 @@ colorscheme OceanicNext
 " Gutter numbers
 set number                  " Display current line number
 set foldcolumn=1
-set relativenumber          " Show relative line number
+" set relativenumber          " Show relative line number
 
 " Tab / indentation settings
 set tabstop=2               " Tab is two spaces
@@ -68,6 +68,9 @@ tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
+
+" vertical split instead of the default horizontal
+let g:neoterm_position = "vertical"
 
 " Buffer movement
 nnoremap <Tab> :bnext<CR>
