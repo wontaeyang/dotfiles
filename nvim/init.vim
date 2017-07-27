@@ -25,6 +25,8 @@ set splitright
 set diffopt+=vertical       " Always use vertical diffs
 set list listchars=tab:»·,trail:·,nbsp:· " Display trailing white spaces
 set clipboard+=unnamedplus  " Always use clipboard on yank and paste
+set ignorecase              " ignores case sensitive search
+set smartcase               " ignores case insensitive search if uppercase letter is present
 
 " vim ruby setup
 syntax enable
