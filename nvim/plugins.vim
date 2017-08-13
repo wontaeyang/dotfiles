@@ -18,9 +18,10 @@ Plug 'janko-m/vim-test'
 " Visual
 Plug 'airblade/vim-gitgutter'
 
-" Ruby / Rails
+" Language specific
 Plug 'tpope/vim-rails'
 Plug 'elixir-lang/vim-elixir'
+Plug 'fatih/vim-go'
 
 " Editing
 Plug 'tpope/vim-surround' " change surrounding quotes or tags
