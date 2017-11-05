@@ -31,6 +31,7 @@ set smartcase               " ignores case insensitive search if uppercase lette
 " vim ruby setup
 syntax enable
 filetype plugin indent on
+let g:ruby_indent_assignment_style = 'variable'
 
 " Theme setup
 set termguicolors
