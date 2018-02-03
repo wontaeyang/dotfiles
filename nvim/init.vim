@@ -96,7 +96,7 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
 "FZF
-nnoremap <C-t> :Files<CR>
+nnoremap <C-t> :FZF<CR>
 " nnoremap <C-f> :Ag<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 autocmd VimEnter * command! -bang -nargs=* Ag
