@@ -24,6 +24,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'fatih/vim-go'
 
 " Editing
+" Plug 'jiangmiao/auto-pairs' " automaticallly close pairs
 Plug 'tpope/vim-surround' " change surrounding quotes or tags
 Plug 'tpope/vim-commentary' " comment stuff out
 Plug 'tpope/vim-endwise' " automatically add end in ruby

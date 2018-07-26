@@ -100,11 +100,19 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nnoremap <C-t> :FZF<CR>
 " nnoremap <C-f> :Ag<CR>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-autocmd VimEnter * command! -bang -nargs=* Ag
+command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>,
   \                 <bang>0 ? fzf#vim#with_preview('up:60%')
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
   \                 <bang>0)
+
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color=always -g "*.{js,json,md,html,rb,erb}" -g "!{tmp/,.git,.sass_cache,node_modules,coverage,log,public/assets,tmp,vendor}/*" '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
 
 " Terminal
@@ -127,6 +135,9 @@ map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 "Split Join
 map <leader>s gS<CR>
 map <leader>j gJ<CR>
+
+" format with goimports instead of gofmt
+let g:go_fmt_command = "goimports"
 
 " Neomake settings
 autocmd! BufWritePost * Neomake
