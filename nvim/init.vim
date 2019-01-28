@@ -72,9 +72,6 @@ tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
 
-" vertical split instead of the default horizontal
-let g:neoterm_position = "vertical"
-
 " Buffer movement
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
@@ -123,11 +120,37 @@ noremap <C-_> :Commentary<cr>
 
 " Tests
 let test#strategy = "neovim"
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>a :TestFile<CR>
-" nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
+" nmap <silent> <leader>t :TestNearest<CR>
+" nmap <silent> <leader>a :TestFile<CR>
+" " nmap <silent> <leader>a :TestSuite<CR>
+" nmap <silent> <leader>l :TestLast<CR>
+" nmap <silent> <leader>g :TestVisit<CR>
+
+" CD into project folder before running tests
+fun! SafeCD(dir)
+  execute 'cd' fnameescape(a:dir)
+endfun
+
+fun! RunFromDir(dir, function)
+  let current_dir = getcwd()
+  if !(a:dir ==? '')
+    call SafeCD(a:dir)
+    execute a:function
+    call SafeCD(current_dir)
+  else
+    execute a:function
+  endif
+endfun
+
+fun! RunFromGemfileDir(function)
+  let gemfile_dir = fnamemodify(findfile("Gemfile"), ':p:h')
+  call RunFromDir(gemfile_dir, a:function)
+endfun
+
+nmap <silent> <leader>t :call RunFromGemfileDir('TestNearest')<CR>
+nmap <silent> <leader>a :call RunFromGemfileDir('TestFile')<CR>
+nmap <silent> <leader>l :call RunFromGemfileDir('TestLast')<CR>
+nmap <silent> <leader>g :call RunFromGemfileDir('TestVisit')<CR>
 
 "edit command with current folders populated
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -138,6 +161,10 @@ map <leader>j gJ<CR>
 
 " format with goimports instead of gofmt
 let g:go_fmt_command = "goimports"
+
+" Split join setup
+let g:splitjoin_ruby_curly_braces = 0
+let g:splitjoin_ruby_hanging_args = 0
 
 " Neomake settings
 autocmd! BufWritePost * Neomake

@@ -24,12 +24,20 @@ alias rc_prod='heroku run rails console -a vhx-crystal'
 
 # VHX alias
 alias crystal='cd ~/development/vhx/crystal'
+
+# Veritas alias
 alias veritas='cd ~/development/entitled/veritas'
 alias veritas_console='veritas && docker-compose run --rm elixir iex -S mix'
 alias veritas_test='veritas && docker-compose run --rm -e "MIX_ENV=test" elixir mix test'
 alias veritas_migrate_test='veritas && docker-compose run --rm -e "MIX_ENV=test" elixir mix ecto.migrate'
 alias veritas_migrate_dev='veritas && docker-compose run --rm elixir mix ecto.migrate'
 alias veritas_psql='veritas && docker exec -it veritas_postgres_1 psql veritas_dev -U postgres'
+
+# Betterment alias
+alias retail='cd ~/src/retail/retail'
+alias core='cd ~/src/retail/retail_core'
+
+
 
 alias ls='ls -aln'
 
@@ -89,13 +97,24 @@ function git_branch_name {
 }
 
 function print_branch_name_and_status {
-  echo "[$(git_branch_name) $(git_dirty_status)]"
+  if [[ $(git_branch_name) ]]; then
+    echo "[$(git_branch_name) $(git_dirty_status)]"
+  else
+    echo ""
+  fi
 }
 
 export PS1="$red\w\[\e[0;31m\]\[\e[39m\]$reset_color $green\[\$(print_branch_name_and_status)\]$reset_color$normal "
 
 # add postgres version variable
 # export PATH="/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH"
+
+# Add tab completion for many Bash commands
+if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+    source "$(brew --prefix)/share/bash-completion/bash_completion";
+elif [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion;
+fi;
 
 #FZF
 export FZF_DEFAULT_COMMAND='ag -g ""'
