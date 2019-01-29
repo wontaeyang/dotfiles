@@ -3,9 +3,9 @@ source ~/.config/nvim/plugins.vim
 " General
 let mapleader = " " "remap leader as space
 
-set hidden                  " persist undo between buffer switches
-set nocompatible            " do not support vi mode
 set encoding=utf-8
+set nocompatible            " do not support vi mode
+set hidden                  " persist undo between buffer switches
 set nowrap                  " Do not wrap overflowing lines
 set lazyredraw              " Faster redraw
 set wildmenu                " Enhanced command line completion
@@ -40,7 +40,6 @@ colorscheme OceanicNext
 " Gutter numbers
 set number                  " Display current line number
 set foldcolumn=1
-" set relativenumber          " Show relative line number
 
 " Tab / indentation settings
 set tabstop=2               " Tab is two spaces
@@ -50,10 +49,8 @@ set expandtab
 set autoindent              " Enable auto indentation
 set copyindent              " Copy previous indentation on autocomplete
 
-
 " Cursor settings
 set cul
-" autocmd InsertEnter,InsertLeave * set cul!
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " neovim specific cursor change setting
 
 " Remove all trailing white spaces on save
@@ -71,6 +68,8 @@ tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
+
+autocmd TermOpen * set bufhidden=hide "prevent closing of terminal on buffer switch
 
 " Buffer movement
 nnoremap <Tab> :bnext<CR>
@@ -102,21 +101,6 @@ command! -bang -nargs=* Ag
   \                 <bang>0 ? fzf#vim#with_preview('up:60%')
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
   \                 <bang>0)
-
-" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color=always -g "*.{js,json,md,html,rb,erb}" -g "!{tmp/,.git,.sass_cache,node_modules,coverage,log,public/assets,tmp,vendor}/*" '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-
-" Terminal
-autocmd TermOpen * set bufhidden=hide "prevent closing of terminal on buffer switch
-
-" Comment
-noremap <C-_> :Commentary<cr>
 
 " Tests
 let test#strategy = "neovim"
@@ -158,16 +142,14 @@ map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 "Split Join
 map <leader>s gS<CR>
 map <leader>j gJ<CR>
+let g:splitjoin_ruby_curly_braces = 0
+let g:splitjoin_ruby_hanging_args = 0
 
 " format with goimports instead of gofmt
 let g:go_fmt_command = "goimports"
 
-" Split join setup
-let g:splitjoin_ruby_curly_braces = 0
-let g:splitjoin_ruby_hanging_args = 0
+" Switch setting
+let g:switch_mapping = '-'
 
 " Neomake settings
 autocmd! BufWritePost * Neomake
-
-" Current line number highlight ( need to be at the end )
-hi CursorLineNR cterm=bold guifg=#ec5f67

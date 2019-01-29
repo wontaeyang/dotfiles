@@ -41,5 +41,9 @@ Plug 'benekastah/neomake' " neovim replacement for syntastic using neovim's job 
 Plug 'tpope/vim-fugitive' " amazing git wrapper for vim
 Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
 Plug 'pbrisbin/vim-mkdir'  " automatically create directories when editing a new file
+Plug 'kassio/neoterm' " better terminal in Neovim
+Plug 'junegunn/vim-slash' " slash search enhancement
+Plug 'AndrewRadev/switch.vim'
+
 
 call plug#end()
