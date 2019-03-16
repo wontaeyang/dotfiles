@@ -56,6 +56,9 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " neovim specific cursor change setting
 " Remove all trailing white spaces on save
 autocmd BufWritePre * %s/\s\+$//e
 
+" Run mix format on save
+" let g:mix_format_on_save = 1
+
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k

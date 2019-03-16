@@ -21,6 +21,7 @@ Plug 'airblade/vim-gitgutter'
 " Language specific
 Plug 'tpope/vim-rails'
 Plug 'elixir-lang/vim-elixir'
+Plug 'mhinz/vim-mix-format'
 Plug 'fatih/vim-go'
 
 " Editing
