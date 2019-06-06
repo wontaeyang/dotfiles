@@ -119,6 +119,23 @@ fi;
 #FZF
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
+function setup {
+  cd ~/src/retail/retail
+  bundle exec rake db:migrate
+  psql -c 'select pg_terminate_backend(pg_stat_activity.pid) from pg_stat_activity where pg_stat_activity.datname = '\''retail_development'\'' and pid <> pg_backend_pid()'
+  bundle exec rake db:reset
+  bundle exec rake db:test:prepare
+  cd ~/src/retail/retail_core
+  bundle exec rake db:test:prepare
+  cd -
+}
+
+function cmd {
+  cd "$1"
+  eval "$2"
+  cd -
+}
+
 # NPM setup
 export NPM_TOKEN="98abfad3-2af0-461f-9e16-390561c71663"
 
