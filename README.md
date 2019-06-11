@@ -44,3 +44,6 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 5. karabiner (keyboard customization) https://pqrs.org/osx/karabiner/
 6. amphetamine (keep mac awake) https://itunes.apple.com/us/app/amphetamine/id937984704?mt=12
 7. gitx (git client) http://gitx.github.io/
+8. paw
+9. licecap
+10. monodraw

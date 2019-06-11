@@ -7,7 +7,6 @@ set encoding=utf-8
 set nocompatible            " do not support vi mode
 set hidden                  " persist undo between buffer switches
 set nowrap                  " Do not wrap overflowing lines
-set lazyredraw              " Faster redraw
 set wildmenu                " Enhanced command line completion
 set wildmode=list:longest,list:full  " Tab completion preview settings
 set backspace=2             " Backspace deletes like most programs in insert mode
@@ -27,6 +26,7 @@ set list listchars=tab:»·,trail:·,nbsp:· " Display trailing white spaces
 set clipboard+=unnamedplus  " Always use clipboard on yank and paste
 set ignorecase              " ignores case sensitive search
 set smartcase               " ignores case insensitive search if uppercase letter is present
+set nopaste                 " disable paste aide
 
 " vim ruby setup
 syntax enable
