@@ -27,6 +27,7 @@ set clipboard+=unnamedplus  " Always use clipboard on yank and paste
 set ignorecase              " ignores case sensitive search
 set smartcase               " ignores case insensitive search if uppercase letter is present
 set nopaste                 " disable paste aide
+set spell                   " enable spell check
 
 " vim ruby setup
 syntax enable
@@ -153,6 +154,12 @@ let g:go_fmt_command = "goimports"
 
 " Switch setting
 let g:switch_mapping = '-'
+
+" Adjust paste to not yank
+xnoremap p "_dP
+
+" load bash_profile for termnal
+let &shell='/bin/bash --rcfile ~/.bash_profile'
 
 " Neomake settings
 autocmd! BufWritePost * Neomake
