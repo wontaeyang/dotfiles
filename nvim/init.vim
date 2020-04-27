@@ -7,8 +7,8 @@ set encoding=utf-8
 set nocompatible            " do not support vi mode
 set hidden                  " persist undo between buffer switches
 set nowrap                  " Do not wrap overflowing lines
-set wildmenu                " Enhanced command line completion
-set wildmode=list:longest,list:full  " Tab completion preview settings
+" set wildmenu                " Enhanced command line completion
+" set wildmode=list:longest,list:full  " Tab completion preview settings
 set backspace=2             " Backspace deletes like most programs in insert mode
 set nobackup                " Avoid writing backup
 set nowritebackup           " Write to original file instead of backup
@@ -27,12 +27,31 @@ set clipboard+=unnamedplus  " Always use clipboard on yank and paste
 set ignorecase              " ignores case sensitive search
 set smartcase               " ignores case insensitive search if uppercase letter is present
 set nopaste                 " disable paste aide
-set spell                   " enable spell check
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 " vim ruby setup
 syntax enable
 filetype plugin indent on
 let g:ruby_indent_assignment_style = 'variable'
+
+" Golang setup
+au FileType go set nolist
+au FileType go set noexpandtab
+
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+let g:go_def_mapping_enabled = 0
+
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
 
 " Theme setup
 set termguicolors
@@ -98,13 +117,8 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 
 "FZF
 nnoremap <C-t> :FZF<CR>
-" nnoremap <C-f> :Ag<CR>
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
+let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow --ignore-case -g "!{.git,node_modules}/*" 2> /dev/null'
+let g:fzf_layout = { 'window': '-tabnew' }
 
 " Tests
 let test#strategy = "neovim"
@@ -148,6 +162,7 @@ map <leader>s gS<CR>
 map <leader>j gJ<CR>
 let g:splitjoin_ruby_curly_braces = 0
 let g:splitjoin_ruby_hanging_args = 0
+let g:splitjoin_trailing_comma = 1
 
 " format with goimports instead of gofmt
 let g:go_fmt_command = "goimports"
