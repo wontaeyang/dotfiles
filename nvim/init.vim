@@ -28,8 +28,28 @@ set ignorecase              " ignores case sensitive search
 set smartcase               " ignores case insensitive search if uppercase letter is present
 set nopaste                 " disable paste aide
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
+" Theme setup
+set termguicolors
+" colorscheme OceanicNext
+colorscheme Dracula
+
+" " Use deoplete.
+" let g:deoplete#enable_at_startup = 1
+
+"Buftabline
+let g:buftabline_show = 1
+let g:buftabline_numbers = 2
+let g:buftabline_separators = 0
+nmap <leader>1 <Plug>BufTabLine.Go(1)
+nmap <leader>2 <Plug>BufTabLine.Go(2)
+nmap <leader>3 <Plug>BufTabLine.Go(3)
+nmap <leader>4 <Plug>BufTabLine.Go(4)
+nmap <leader>5 <Plug>BufTabLine.Go(5)
+nmap <leader>6 <Plug>BufTabLine.Go(6)
+nmap <leader>7 <Plug>BufTabLine.Go(7)
+nmap <leader>8 <Plug>BufTabLine.Go(8)
+nmap <leader>9 <Plug>BufTabLine.Go(9)
+nmap <leader>0 <Plug>BufTabLine.Go(10)
 
 " vim ruby setup
 syntax enable
@@ -53,9 +73,6 @@ let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 
-" Theme setup
-set termguicolors
-colorscheme OceanicNext
 
 " Gutter numbers
 set number                  " Display current line number
@@ -98,25 +115,9 @@ autocmd TermOpen * set bufhidden=hide "prevent closing of terminal on buffer swi
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
-" Airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='oceanicnext'
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-
 "FZF
 nnoremap <C-t> :FZF<CR>
+nnoremap <C-b> :Buffers<CR>
 let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow --ignore-case -g "!{.git,node_modules}/*" 2> /dev/null'
 let g:fzf_layout = { 'window': '-tabnew' }
 
@@ -127,32 +128,6 @@ let test#strategy = "neovim"
 " " nmap <silent> <leader>a :TestSuite<CR>
 " nmap <silent> <leader>l :TestLast<CR>
 " nmap <silent> <leader>g :TestVisit<CR>
-
-" CD into project folder before running tests
-fun! SafeCD(dir)
-  execute 'cd' fnameescape(a:dir)
-endfun
-
-fun! RunFromDir(dir, function)
-  let current_dir = getcwd()
-  if !(a:dir ==? '')
-    call SafeCD(a:dir)
-    execute a:function
-    call SafeCD(current_dir)
-  else
-    execute a:function
-  endif
-endfun
-
-fun! RunFromGemfileDir(function)
-  let gemfile_dir = fnamemodify(findfile("Gemfile"), ':p:h')
-  call RunFromDir(gemfile_dir, a:function)
-endfun
-
-nmap <silent> <leader>t :call RunFromGemfileDir('TestNearest')<CR>
-nmap <silent> <leader>a :call RunFromGemfileDir('TestFile')<CR>
-nmap <silent> <leader>l :call RunFromGemfileDir('TestLast')<CR>
-nmap <silent> <leader>g :call RunFromGemfileDir('TestVisit')<CR>
 
 "edit command with current folders populated
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
