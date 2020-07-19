@@ -32,7 +32,7 @@ Plug 'ConradIrwin/vim-bracketed-paste' "better pasting
 Plug 'AndrewRadev/splitjoin.vim' " auto break block of code (hash & etc..)
 
 " Utilities
-Plug 'ap/vim-buftabline' " display taps at the top of the screen
+Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
 Plug 'tpope/vim-repeat' " enables repeating other supported plugins with the . command
 Plug 'benekastah/neomake' " neovim replacement for syntastic using neovim's job control functonality
@@ -41,8 +41,8 @@ Plug 'pbrisbin/vim-mkdir'  " automatically create directories when editing a new
 Plug 'kassio/neoterm' " better terminal in Neovim
 Plug 'junegunn/vim-slash' " slash search enhancement
 Plug 'AndrewRadev/switch.vim'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 " Plug 'sebdah/vim-delve'
 
 call plug#end()
