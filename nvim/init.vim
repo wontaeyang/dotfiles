@@ -127,11 +127,11 @@ let g:fzf_layout = { 'window': '-tabnew' }
 
 " Tests
 let test#strategy = "neovim"
-" nmap <silent> <leader>t :TestNearest<CR>
-" nmap <silent> <leader>a :TestFile<CR>
-" " nmap <silent> <leader>a :TestSuite<CR>
-" nmap <silent> <leader>l :TestLast<CR>
-" nmap <silent> <leader>g :TestVisit<CR>
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>a :TestFile<CR>
+" nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
 
 "edit command with current folders populated
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
