@@ -68,6 +68,7 @@ let g:go_def_mapping_enabled = 1
 let g:go_auto_type_info = 1
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_term_enabled = 'split'
 
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -78,6 +79,44 @@ let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 
+" Remap some vim-go key bindings to prevent colliding with FZF
+let g:go_def_mapping_enabled = 0
+au FileType go let $APP_ENV = 'test'
+au FileType go nmap gd :GoDef<CR>
+au FileType go nmap gt :GoDefPop<CR>
+au FileType go nmap <silent> <leader>t :call KesselTestFunc()<CR>
+nmap <silent> <leader>a :TestFile<CR>
+nmap <silent> <leader>l :TestLast<CR>
+
+function! KesselTestFuncName()
+  let test = search('func \(Test\|.\+Test\)', "bcnW")
+
+  if test == 0
+    echo "No test found immediate to cursor"
+    return
+  end
+
+  let line = getline(test)
+  let match_list = []
+  call substitute(line, 'Test\w\+', '\=add(match_list, submatch(0))', 'g')
+
+  if matchstr(line, 'func Test') != ''
+    return match_list[0]
+  elseif matchstr(line, 'func (') != ''
+    return match_list[-1]
+  end
+endfunction
+
+function! KesselTestModuleName()
+  let file_path = expand('%:p:h')
+  let start_pos = match(file_path, 'kessel')
+  let end_pos = len(file_path)
+  return file_path[start_pos:end_pos]
+endfunction
+
+function! KesselTestFunc()
+  execute ":split | terminal env $(cat test/test.env | xargs) go test -v " . KesselTestModuleName() . " -testify.m " . KesselTestFuncName()
+endfunction
 
 " Gutter numbers
 set number                  " Display current line number
@@ -121,7 +160,7 @@ nnoremap <S-Tab> :bprevious<CR>
 
 "FZF
 nnoremap <C-t> :FZF<CR>
-nnoremap <C-b> :Buffers<CR>
+" nnoremap <C-b> :Buffers<CR>
 let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow --ignore-case -g "!{.git,node_modules}/*" 2> /dev/null'
 let g:fzf_layout = { 'window': '-tabnew' }
 
@@ -129,9 +168,7 @@ let g:fzf_layout = { 'window': '-tabnew' }
 let test#strategy = "neovim"
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>a :TestFile<CR>
-" nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
 
 "edit command with current folders populated
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
