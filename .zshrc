@@ -32,3 +32,10 @@ zstyle ':vcs_info:*' eable git
 export GOPATH=$HOME/development/go
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+
+# Parsec
+alias ssh-parsec='ssh -i ~/.ssh/wontae-ssh wontae@54.89.31.154'
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export CGO_CPPFLAGS="-Wno-error -Wno-nullability-completeness -Wno-expansion-to-defined -Wno-builtin-requires-header"

@@ -1,8 +1,9 @@
 source ~/.config/nvim/plugins.vim
 
-" General
+" Space for leader
 let mapleader = " " "remap leader as space
 
+" General
 set encoding=utf-8
 set nocompatible            " do not support vi mode
 set hidden                  " persist undo between buffer switches
@@ -27,6 +28,19 @@ set clipboard+=unnamedplus  " Always use clipboard on yank and paste
 set ignorecase              " ignores case sensitive search
 set smartcase               " ignores case insensitive search if uppercase letter is present
 set nopaste                 " disable paste aide
+set cursorline              " highlilght current row
+
+" Gutter numbers
+set number                  " Display current line number
+set foldcolumn=1
+
+" Tab / indentation settings
+set tabstop=2               " Tab is two spaces
+set shiftwidth=2
+set shiftround
+set expandtab
+set autoindent              " Enable auto indentation
+set copyindent              " Copy previous indentation on autocomplete
 
 " Theme setup
 set termguicolors
@@ -50,10 +64,7 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-
-" vim ruby setup
+" Vim ruby setup
 syntax enable
 filetype plugin indent on
 let g:ruby_indent_assignment_style = 'variable'
@@ -78,16 +89,16 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
+let g:go_doc_keywordprg_enabled = 0
 
 " Remap some vim-go key bindings to prevent colliding with FZF
 let g:go_def_mapping_enabled = 0
-au FileType go let $APP_ENV = 'test'
 au FileType go nmap gd :GoDef<CR>
 au FileType go nmap gt :GoDefPop<CR>
 au FileType go nmap <silent> <leader>t :call KesselTestFunc()<CR>
-nmap <silent> <leader>a :TestFile<CR>
-nmap <silent> <leader>l :TestLast<CR>
 
+
+" Parsec Kessel test runner for testify suite
 function! KesselTestFuncName()
   let test = search('func \(Test\|.\+Test\)', "bcnW")
 
@@ -118,23 +129,6 @@ function! KesselTestFunc()
   execute ":split | terminal env $(cat test/test.env | xargs) go test -v " . KesselTestModuleName() . " -testify.m " . KesselTestFuncName()
 endfunction
 
-" Gutter numbers
-set number                  " Display current line number
-set foldcolumn=1
-
-" Tab / indentation settings
-set tabstop=2               " Tab is two spaces
-set shiftwidth=2
-set shiftround
-set expandtab
-set autoindent              " Enable auto indentation
-set copyindent              " Copy previous indentation on autocomplete
-
-" Cursor settings
-set cul
-
-" Remove all trailing white spaces on save
-autocmd BufWritePre * %s/\s\+$//e
 
 " Run mix format on save
 " let g:mix_format_on_save = 1
@@ -157,6 +151,12 @@ autocmd TermOpen * set bufhidden=hide "prevent closing of terminal on buffer swi
 " Buffer movement
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
+
+" K to split lines
+nnoremap K i<CR><Esc>
+
+" Adjust paste to not yank
+xnoremap p "_dP
 
 "FZF
 nnoremap <C-t> :FZF<CR>
@@ -183,11 +183,11 @@ let g:splitjoin_trailing_comma = 1
 " Switch setting
 let g:switch_mapping = '-'
 
-" Adjust paste to not yank
-xnoremap p "_dP
+" Ale setup
+let g:airline#extensions#ale#enabled = 1
 
-" load bash_profile for termnal
-" let &shell='/bin/bash --rcfile ~/.bash_profile'
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
-" Neomake settings
-autocmd! BufWritePost * Neomake
+" Remove all trailing white spaces on save
+autocmd BufWritePre * %s/\s\+$//e
