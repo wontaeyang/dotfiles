@@ -14,9 +14,9 @@ Plug 'janko-m/vim-test'
 
 " Helpers
 Plug 'airblade/vim-gitgutter'
-Plug 'dense-analysis/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make' }
+Plug 'hrsh7th/nvim-compe'
+Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 
 " Language specific
 Plug 'tpope/vim-rails'

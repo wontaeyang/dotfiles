@@ -18,7 +18,7 @@ set history=100             " Set undo history depth
 set showcmd                 " Display incomplete commands
 set incsearch               " Do incremental searching
 set laststatus=2            " Always display the status line
-set autowrite               " Automatically :write before running commands
+set autowriteall            " Automatically :write before running commands
 set nojoinspaces            " Use one space, not two, after punctuation.
 set splitbelow              " Open new split panes to right and bottom, which feels more natural
 set splitright
@@ -27,12 +27,9 @@ set list listchars=tab:»·,trail:·,nbsp:· " Display trailing white spaces
 set clipboard+=unnamedplus  " Always use clipboard on yank and paste
 set ignorecase              " ignores case sensitive search
 set smartcase               " ignores case insensitive search if uppercase letter is present
-set nopaste                 " disable paste aide
+set nopaste                 " disable paste aid
 set cursorline              " highlilght current row
-
-" Gutter numbers
 set number                  " Display current line number
-set foldcolumn=1
 
 " Tab / indentation settings
 set tabstop=2               " Tab is two spaces
@@ -42,10 +39,44 @@ set expandtab
 set autoindent              " Enable auto indentation
 set copyindent              " Copy previous indentation on autocomplete
 
+set spell
+set spelllang=en,cjk
+
 " Theme setup
 syntax enable
 set termguicolors
 colorscheme OceanicNext
+
+" Setup LSP for Golang
+lua << EOF
+require'lspconfig'.gopls.setup{}
+EOF
+
+" Completion settings
+set completeopt=menuone,noselect
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:false
+let g:compe.source.spell = v:true
+let g:compe.source.tags = v:false
+let g:compe.source.emoji = v:true
 
 " BarBar tabline configs
 nnoremap <silent> <leader>1 :BufferGoto 1<CR>
@@ -60,24 +91,17 @@ nnoremap <silent> <leader>9 :BufferLast<CR>
 nnoremap <silent> <leader>d :BufferClose<CR>
 nnoremap <silent> <leader>q :BufferCloseAllButCurrent<CR>
 
-" NOTE: If barbar's option dict isn't created yet, create it
 let bufferline = get(g:, 'bufferline', {})
 let bufferline.animation = v:false " Disable animation
 let bufferline.auto_hide = v:false " Auto-hide single buffer
 let bufferline.tabpages = v:true   " Enable tab pages count
 let bufferline.closable = v:false  " Enable/disable close button
-
-" Enable/disable icons
-" if set to 'numbers', will show buffer index in the tabline
-" if set to 'both', will show buffer index and icons in the tabline
-let bufferline.icons = 'numbers'
-
+let bufferline.icons = 'numbers'   " Display tab numbers
 let bufferline.maximum_padding = 1 " Sets the maximum padding width with which to surround each tab.
 let bufferline.maximum_length = 30 " Sets the maximum buffer name length.
-
-" Sets the name of unnamed buffers. By default format is "[Buffer X]"
-" where X is the buffer number. But only a static string is accepted here.
 let bufferline.no_name_title = "New Buffer"
+let bufferline.icon_separator_active = ''
+let bufferline.icon_separator_inactive = ''
 
 " Vim ruby setup
 filetype plugin indent on
@@ -186,12 +210,6 @@ map <leader>j gJ<CR>
 let g:splitjoin_ruby_curly_braces = 0
 let g:splitjoin_ruby_hanging_args = 0
 let g:splitjoin_trailing_comma = 1
-
-" Ale setup
-let g:airline#extensions#ale#enabled = 1
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
 
 " Remove all trailing white spaces on save
 autocmd BufWritePre * %s/\s\+$//e
