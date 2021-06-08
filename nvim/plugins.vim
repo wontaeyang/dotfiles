@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Colorschemes
 Plug 'mhartington/oceanic-next'
 Plug 'dracula/vim'
+Plug 'arcticicestudio/nord-vim'
 
 " Tabline
 Plug 'romgrk/barbar.nvim'
@@ -17,6 +18,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " Language specific
 Plug 'tpope/vim-rails'

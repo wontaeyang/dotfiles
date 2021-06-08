@@ -39,17 +39,32 @@ set expandtab
 set autoindent              " Enable auto indentation
 set copyindent              " Copy previous indentation on autocomplete
 
-set spell
-set spelllang=en,cjk
+" set spell
+" set spelllang=en,cjk
 
 " Theme setup
 syntax enable
 set termguicolors
 colorscheme OceanicNext
+" colorscheme nord
 
 " Setup LSP for Golang
 lua << EOF
 require'lspconfig'.gopls.setup{}
+EOF
+
+
+" Treesitter setup
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = false,
+  },
+  indent = {
+    enable = false,
+  }
+}
 EOF
 
 " Completion settings
@@ -94,11 +109,12 @@ nnoremap <silent> <leader>q :BufferCloseAllButCurrent<CR>
 let bufferline = get(g:, 'bufferline', {})
 let bufferline.animation = v:false " Disable animation
 let bufferline.auto_hide = v:false " Auto-hide single buffer
-let bufferline.tabpages = v:true   " Enable tab pages count
+let bufferline.tabpages = v:false  " Enable tab pages count
 let bufferline.closable = v:false  " Enable/disable close button
 let bufferline.icons = 'numbers'   " Display tab numbers
 let bufferline.maximum_padding = 1 " Sets the maximum padding width with which to surround each tab.
 let bufferline.maximum_length = 30 " Sets the maximum buffer name length.
+let bufferline.semantic_letters = v:false
 let bufferline.no_name_title = "New Buffer"
 let bufferline.icon_separator_active = ''
 let bufferline.icon_separator_inactive = ''
@@ -138,31 +154,20 @@ au FileType go nmap <silent> <leader>t :call KesselTestFunc()<CR>
 
 " Parsec Kessel test runner for testify suite
 function! KesselTestFuncName()
-  let test = search('func \(Test\|.\+Test\)', "bcnW")
-
-  if test == 0
+  let test_func = search('func ', "bcnW")
+  if test_func == 0
     echo "No test found immediate to cursor"
     return
   end
-
-  let line = getline(test)
-  let match_list = []
-  call substitute(line, 'Test\w\+', '\=add(match_list, submatch(0))', 'g')
-
-  if matchstr(line, 'func Test') != ''
-    return match_list[0]
-  elseif matchstr(line, 'func (') != ''
-    return match_list[-1]
-  end
+  let line = getline(test_func)
+  return matchstr(line, ' Test\w\+')[1:-1]
 endfunction
-
 function! KesselTestModuleName()
   let file_path = expand('%:p:h')
   let start_pos = match(file_path, 'kessel')
   let end_pos = len(file_path)
   return file_path[start_pos:end_pos]
 endfunction
-
 function! KesselTestFunc()
   execute ":split | terminal env $(cat test/test.env | xargs) go test -bench=. -v " . KesselTestModuleName() . " -testify.m " . KesselTestFuncName()
 endfunction
@@ -183,8 +188,8 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 autocmd TermOpen * set bufhidden=hide "prevent closing of terminal on buffer switch
 
 " Buffer movement
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+nnoremap <Tab> :BufferNext<CR>
+nnoremap <S-Tab> :BufferPrevious<CR>
 
 " Adjust paste to not yank
 xnoremap p "_dP
