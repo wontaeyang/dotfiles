@@ -41,7 +41,6 @@ Plug 'ConradIrwin/vim-bracketed-paste' "better pasting
 Plug 'AndrewRadev/splitjoin.vim' " auto break block of code (hash & etc..)
 
 " Utilities
-Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
 Plug 'tpope/vim-fugitive' " amazing git wrapper for vim
 Plug 'junegunn/vim-slash' " slash search enhancement
