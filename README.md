@@ -14,6 +14,8 @@
 
 4. symlink folders `ln -s ~/development/dotfiles/nvim ~/.config/nvim`
 
+5. symlink zshrc `ln -s ~/development/dotfiles/.zshrc ~/.zshrc`
+
 5. install vim-plug if vim plug is not in repo*
 ```
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
@@ -22,18 +24,10 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 
 6. brew install fzf
 
-7. brew install the_silver_searcher
-
-8. gem install rubocop
+7. brew install ripgrep
 
 8. `nvim +PlugInstall`
 
-
-## to-do
-
-1. add .bash_profile
-
-2. add .bash_rc
 
 ## apps
 
