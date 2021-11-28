@@ -8,7 +8,8 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'romgrk/barbar.nvim'
 
 " Search
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' " fuzzy file finder and so much more
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Test
 Plug 'janko-m/vim-test'
