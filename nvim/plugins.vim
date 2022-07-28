@@ -26,6 +26,7 @@ Plug 'tpope/vim-rails'
 Plug 'elixir-lang/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'fatih/vim-go'
+Plug 'rhysd/vim-clang-format'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 

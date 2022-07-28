@@ -3,6 +3,40 @@ alias gco='git checkout'
 
 # map Neovim to Vim
 alias vim='nvim'
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# set vim mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# enable vim cursors
+cursor_mode() {
+    # See https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html for cursor shapes
+    cursor_block='\e[2 q'
+    cursor_beam='\e[6 q'
+
+    function zle-keymap-select {
+        if [[ ${KEYMAP} == vicmd ]] ||
+            [[ $1 = 'block' ]]; then
+            echo -ne $cursor_block
+        elif [[ ${KEYMAP} == main ]] ||
+            [[ ${KEYMAP} == viins ]] ||
+            [[ ${KEYMAP} = '' ]] ||
+            [[ $1 = 'beam' ]]; then
+            echo -ne $cursor_beam
+        fi
+    }
+
+    zle-line-init() {
+        echo -ne $cursor_beam
+    }
+
+    zle -N zle-keymap-select
+    zle -N zle-line-init
+}
+
+cursor_mode
 
 # folder aliases
 alias dotfiles='cd ~/development/dotfiles'
@@ -41,3 +75,4 @@ alias ssh-parsec='ssh -i ~/.ssh/wontae-ssh wontae@54.89.31.154'
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export CGO_CPPFLAGS="-Wno-error -Wno-nullability-completeness -Wno-expansion-to-defined -Wno-builtin-requires-header"
+

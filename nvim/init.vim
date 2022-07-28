@@ -48,16 +48,26 @@ set termguicolors
 colorscheme OceanicNext
 " colorscheme nord
 
-" Setup LSP for Golang
+
+" Lua settings
 lua << EOF
-require'lspconfig'.gopls.setup{}
-EOF
+-- lsp mappings
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<space>r', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+-- Setup LSP for Golang
+require('lspconfig')['gopls'].setup{}
+
+-- Setup LSP for Clang
+require('lspconfig')['clangd'].setup{}
 
 
-" Treesitter setup
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
+-- Treesitter setup
+require('nvim-treesitter.configs').setup {
+  ensure_installed = "all",
   highlight = {
     enable = false,
   },
@@ -215,6 +225,9 @@ map <leader>j gJ<CR>
 let g:splitjoin_ruby_curly_braces = 0
 let g:splitjoin_ruby_hanging_args = 0
 let g:splitjoin_trailing_comma = 1
+
+" Enable clang-format
+autocmd FileType c ClangFormatAutoEnable
 
 " Remove all trailing white spaces on save
 autocmd BufWritePre * %s/\s\+$//e
