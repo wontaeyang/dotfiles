@@ -16,7 +16,6 @@ Plug 'janko-m/vim-test'
 
 " Helpers
 Plug 'airblade/vim-gitgutter'
-Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
