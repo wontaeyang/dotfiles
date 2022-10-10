@@ -22,23 +22,16 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " Language specific
-Plug 'tpope/vim-rails'
-Plug 'elixir-lang/vim-elixir'
-Plug 'mhinz/vim-mix-format'
 Plug 'fatih/vim-go'
 Plug 'rhysd/vim-clang-format'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
 
 " Files
 Plug 'tpope/vim-eunuch' " convenient deleting moving and renameing files
 Plug 'pbrisbin/vim-mkdir'  " automatically create directories when editing a new file
-Plug 'qpkorr/vim-bufkill' "prevent closing window when deleting buffer
 
 " Editing
 Plug 'tpope/vim-surround' " change surrounding quotes or tags
 Plug 'tpope/vim-commentary' " comment stuff out
-Plug 'tpope/vim-endwise' " automatically add end in ruby
 Plug 'ConradIrwin/vim-bracketed-paste' "better pasting
 Plug 'AndrewRadev/splitjoin.vim' " auto break block of code (hash & etc..)
 

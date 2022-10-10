@@ -42,6 +42,7 @@ cursor_mode
 alias dotfiles='cd ~/development/dotfiles'
 alias nori='cd ~/development/projects/nori'
 alias kessel='cd ~/development/parsec/kessel'
+alias infra='cd ~/development/parsec/infra'
 
 # up 'n' folders
 alias ..='cd ..'
