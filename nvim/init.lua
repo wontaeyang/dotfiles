@@ -1,4 +1,4 @@
--- somethings gotta run on vim script
+-- some things gotta run on vim script
 vim.cmd [[
   source ~/.config/nvim/plugins.vim
   syntax enable
@@ -174,6 +174,29 @@ vim.g.go_highlight_structs = true
 vim.g.go_highlight_types = true
 vim.g.go_doc_keywordprg_enabled = false
 vim.g.go_def_mapping_enabled = false -- remap some vim-go key bindings to prevent colliding with FZF
+
+-- Parsec Kessel test runner for testify suite
+vim.cmd [[
+  function! KesselTestFuncName()
+    let test_func = search('func ', "bcnW")
+    if test_func == 0
+      echo "No test found immediate to cursor"
+      return
+    end
+    let line = getline(test_func)
+    return matchstr(line, ' Test\w\+')[1:-1]
+  endfunction
+  function! KesselTestModuleName()
+    let file_path = expand('%:p:h')
+    let start_pos = match(file_path, 'kessel')
+    let end_pos = len(file_path)
+    return file_path[start_pos:end_pos]
+  endfunction
+  function! KesselTestFunc()
+    execute ":split | terminal env $(cat test/test.env | xargs) go test -bench=. -v " . KesselTestModuleName() . " -testify.m " . KesselTestFuncName()
+  endfunction
+]]
+
 
 -- Remove all trailing white spaces on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
