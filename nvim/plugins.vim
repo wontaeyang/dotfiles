@@ -23,6 +23,7 @@ Plug 'hrsh7th/nvim-compe'
 
 " Language specific
 Plug 'fatih/vim-go'
+Plug 'ziglang/zig.vim'
 Plug 'rhysd/vim-clang-format'
 
 " Files

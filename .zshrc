@@ -37,6 +37,7 @@ zstyle ':vcs_info:*' eable git
 export GOPATH=$HOME/development/go
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+export PATH=$PATH:/opt/homebrew/bin/zig
 
 
 # Parsec
