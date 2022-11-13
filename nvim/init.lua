@@ -52,6 +52,7 @@ require('nvim-treesitter.configs').setup {
   }
 }
 
+-- setup code completion
 vim.opt.completeopt = 'menuone,noselect'
 require'compe'.setup {
   enabled = true,
@@ -121,9 +122,6 @@ map('t', '<C-l>', '<C-\\><C-n><C-w>l', opts)
 -- buffer movement
 map('n', '<Tab>', '<Cmd>BufferNext<CR>', opts)
 map('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts)
-
--- splitjoin
-vim.g.splitjoin_trailing_comma = true
 
 -- Vim test
 vim.g['test#strategy'] = 'neovim'
