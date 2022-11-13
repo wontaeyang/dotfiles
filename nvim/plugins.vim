@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
+
 " Colorschemes
 Plug 'mhartington/oceanic-next'
 Plug 'dracula/vim'

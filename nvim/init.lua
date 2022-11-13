@@ -11,7 +11,7 @@ vim.opt.wildmenu = true -- enhanced command line completion=
 vim.opt.wildmode = 'list:longest,list:full' -- tab completion preview settings
 vim.opt.wrap = false -- prevent wrap
 vim.opt.list = true -- enable list mode, show white spaces
-vim.opt.listchars = 'tab:»·,trail:·,nbsp:·' -- cusotm characters for white spaces
+vim.opt.listchars = 'tab:»·,trail:·,nbsp:·' -- custom characters for white spaces
 vim.opt.clipboard = 'unnamedplus'  -- use clipboard for yank and paste
 vim.opt.ignorecase = true -- case insensitive search
 vim.opt.smartcase = true -- ignore insensitive search if first letter is uppercase
@@ -194,7 +194,6 @@ vim.cmd [[
     execute ":split | terminal env $(cat test/test.env | xargs) go test -bench=. -v " . KesselTestModuleName() . " -testify.m " . KesselTestFuncName()
   endfunction
 ]]
-
 
 -- Remove all trailing white spaces on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
