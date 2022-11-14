@@ -27,6 +27,8 @@ vim.opt.copyindent = true -- copy previous indentation on autocomplete
 vim.opt.termguicolors = true -- enable better colors on terminal
 vim.opt.spell = true
 vim.opt.spelllang = 'en_us'
+vim.opt.splitbelow = true -- Open new split panes to right and bottom, which feels more natural
+vim.opt.splitright = true
 
 -- keymap variables
 local map = vim.api.nvim_set_keymap
