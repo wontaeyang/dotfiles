@@ -25,6 +25,8 @@ vim.opt.expandtab = true -- Use the appropriate number of spaces to insert a tab
 vim.opt.autoindent = true -- enable auto indentation
 vim.opt.copyindent = true -- copy previous indentation on autocomplete
 vim.opt.termguicolors = true -- enable better colors on terminal
+vim.opt.spell = true
+vim.opt.spelllang = 'en_us'
 
 -- keymap variables
 local map = vim.api.nvim_set_keymap
