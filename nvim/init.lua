@@ -5,6 +5,9 @@ vim.cmd [[
   colorscheme OceanicNext
 ]]
 
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
 vim.g.mapleader = ' ' -- Set space for leader
 vim.opt.encoding = 'utf-8' -- set default encoding
 vim.opt.wildmenu = true -- enhanced command line completion=
@@ -25,10 +28,7 @@ vim.opt.expandtab = true -- Use the appropriate number of spaces to insert a tab
 vim.opt.autoindent = true -- enable auto indentation
 vim.opt.copyindent = true -- copy previous indentation on autocomplete
 vim.opt.termguicolors = true -- enable better colors on terminal
-
--- keymap variables
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+vim.opt.iskeyword:append("-") -- consider dashed string as one word
 
 -- LSP custom keys
 map('n', '<space>r', 'vim.diagnostic.open_float', opts)
@@ -53,32 +53,24 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- setup code completion
-vim.opt.completeopt = 'menuone,noselect'
-require'compe'.setup {
-  enabled = true,
-  autocomplete = true,
-  debug = false,
-  min_length = 1,
-  preselect = 'enable',
-  throttle_time = 80,
-  source_timeout = 200,
-  resolve_timeout = 800,
-  incomplete_delay = 400,
-  max_abbr_width = 100,
-  max_kind_width = 100,
-  max_menu_width = 100,
-  documentation = true,
-  source = {
-    path = true,
-    buffer = true,
-    calc = true,
-    nvim_lsp = true,
-    nvim_lua = true,
-    spell = false,
-    tags = false,
-    emoji = true,
-  },
-}
+vim.opt.completeopt = 'menu,menuone,noselect'
+local cmp = require'cmp'
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'cmdline' },
+  }),
+})
 
 -- BarBar tabline keymaps
 require'bufferline'.setup {

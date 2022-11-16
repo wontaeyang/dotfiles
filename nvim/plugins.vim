@@ -20,7 +20,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'hrsh7th/nvim-compe'
+
+" Completion
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/nvim-cmp'
 
 " Language specific
 Plug 'fatih/vim-go'
@@ -38,9 +42,7 @@ Plug 'ConradIrwin/vim-bracketed-paste' "better pasting
 Plug 'AndrewRadev/splitjoin.vim' " auto break block of code (hash & etc..)
 
 " Utilities
-Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
 Plug 'tpope/vim-fugitive' " amazing git wrapper for vim
-Plug 'junegunn/vim-slash' " slash search enhancement
 Plug 'tpope/vim-dotenv' " read env files
 
 call plug#end()
