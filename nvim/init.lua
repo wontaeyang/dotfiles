@@ -29,6 +29,10 @@ vim.opt.autoindent = true -- enable auto indentation
 vim.opt.copyindent = true -- copy previous indentation on autocomplete
 vim.opt.termguicolors = true -- enable better colors on terminal
 vim.opt.iskeyword:append("-") -- consider dashed string as one word
+vim.opt.spell = true
+vim.opt.spelllang = 'en_us'
+vim.opt.splitbelow = true -- open horizontal split to bottom
+vim.opt.splitright = true -- open vertical split to right
 
 -- LSP custom keys
 map('n', '<space>r', 'vim.diagnostic.open_float', opts)
@@ -153,14 +157,19 @@ vim.g.go_auto_type_info = true
 vim.g.go_def_mode='gopls'
 vim.g.go_info_mode='gopls'
 vim.g.go_term_enabled = 'split'
+vim.g.go_highlight_generate_tags = true
 vim.g.go_highlight_build_constraints = true
 vim.g.go_highlight_extra_types = true
 vim.g.go_highlight_fields = true
 vim.g.go_highlight_functions = true
 vim.g.go_highlight_function_parameters = true
+vim.g.go_highlight_function_calls = true
+vim.g.go_highlight_format_strings = true
 vim.g.go_highlight_methods = true
 vim.g.go_highlight_operators = true
 vim.g.go_highlight_structs = true
+vim.g.go_highlight_varialbe_declarations = true
+vim.g.go_highlight_variable_assignments = true
 vim.g.go_highlight_types = true
 vim.g.go_doc_keywordprg_enabled = false
 vim.g.go_def_mapping_enabled = false -- remap some vim-go key bindings to prevent colliding with FZF
