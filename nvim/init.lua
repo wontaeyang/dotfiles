@@ -34,32 +34,15 @@ vim.opt.spelllang = 'en_us'
 vim.opt.splitbelow = true -- open horizontal split to bottom
 vim.opt.splitright = true -- open vertical split to right
 
--- LSP custom keys
-map('n', '<space>r', 'vim.diagnostic.open_float', opts)
-map('n', '[d', 'vim.diagnostic.goto_prev', opts)
-map('n', ']d', 'vim.diagnostic.goto_next', opts)
-map('n', '<space>q', 'vim.diagnostic.setloclist', opts)
-
--- LSP languages
-require('lspconfig')['gopls'].setup{} -- Setup LSP for Golang
-require('lspconfig')['clangd'].setup{} -- Setup LSP for Clang
-require('lspconfig')['zls'].setup{} -- Setup LSP for Zig
-
--- Treesitter setup
-require('nvim-treesitter.configs').setup {
-  ensure_installed = "all",
-  highlight = {
-    enable = false,
-  },
-  indent = {
-    enable = false,
-  }
-}
-
 -- setup code completion
 vim.opt.completeopt = 'menu,menuone,noselect'
 local cmp = require'cmp'
 cmp.setup({
+  snippet = {
+    expand = function(args)
+     require('luasnip').lsp_expand(args.body)
+    end,
+  },
   mapping = cmp.mapping.preset.insert({
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -70,11 +53,62 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
     { name = 'buffer' },
     { name = 'path' },
-    { name = 'cmdline' },
   }),
 })
+
+-- manage LSP server installation
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { "clangd", "gopls", "zls", "sumneko_lua" }
+})
+
+-- LSP custom keys
+map('n', '<space>r', 'vim.diagnostic.open_float', opts)
+map('n', '[d', 'vim.diagnostic.goto_prev', opts)
+map('n', ']d', 'vim.diagnostic.goto_next', opts)
+map('n', '<space>q', 'vim.diagnostic.setloclist', opts)
+
+-- LSP languages
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+require('lspconfig')['gopls'].setup{
+  capabilities = capabilities,
+}
+require('lspconfig')['clangd'].setup{
+  capabilities = capabilities,
+}
+require('lspconfig')['zls'].setup{
+  capabilities = capabilities,
+}
+
+-- Treesitter setup
+require('nvim-treesitter.configs').setup {
+  ensure_installed = {
+    "go",
+    "c",
+    "lua",
+    "zig",
+    "json",
+    "markdown",
+    "bash",
+    "vim",
+    "html",
+    "css",
+    "javascript",
+    "typescript",
+    "dockerfile",
+    "yaml",
+  },
+  auto_install = true,
+  highlight = {
+    enable = false,
+  },
+  indent = {
+    enable = false,
+  }
+}
 
 -- BarBar tabline keymaps
 require'bufferline'.setup {
