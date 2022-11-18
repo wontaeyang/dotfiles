@@ -8,15 +8,14 @@
 
 3. clone dotfiles repo `git@github.com:wontaeyang/dotfiles.git` to `~/development`
 
-4. clone powerline fonts `https://github.com/powerline/fonts.git` to `~/development`
+4. install fonts `./install.sh` in `~/development/fonts`
 
-5. install fonts `./install.sh` in `~/development/fonts`
+5. symlink folders `ln -s ~/development/dotfiles/nvim ~/.config/nvim`
 
-4. symlink folders `ln -s ~/development/dotfiles/nvim ~/.config/nvim`
+6. symlink zshrc `ln -s ~/development/dotfiles/.zshrc ~/.zshrc`
 
-5. symlink zshrc `ln -s ~/development/dotfiles/.zshrc ~/.zshrc`
+7. install vim-plug if vim plug is not in repo
 
-5. install vim-plug if vim plug is not in repo*
 ```
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

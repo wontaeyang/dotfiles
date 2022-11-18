@@ -2,7 +2,7 @@
 vim.cmd [[
   source ~/.config/nvim/plugins.vim
   syntax enable
-  colorscheme OceanicNext
+  colorscheme nord
 ]]
 
 local map = vim.api.nvim_set_keymap
@@ -33,6 +33,13 @@ vim.opt.spell = true
 vim.opt.spelllang = 'en_us'
 vim.opt.splitbelow = true -- open horizontal split to bottom
 vim.opt.splitright = true -- open vertical split to right
+
+-- disable spell check in terminal
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+  callback = function()
+    vim.opt.spell = false
+  end,
+})
 
 -- setup code completion
 vim.opt.completeopt = 'menu,menuone,noselect'
