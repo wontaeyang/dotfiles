@@ -8,7 +8,6 @@ export VISUAL="nvim"
 
 # folder aliases
 alias dotfiles='cd ~/development/dotfiles'
-alias nori='cd ~/development/projects/nori'
 alias kessel='cd ~/development/parsec/kessel'
 alias infra='cd ~/development/parsec/infra'
 
@@ -38,7 +37,6 @@ export GOPATH=$HOME/development/go
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 export PATH=$PATH:/opt/homebrew/bin/zig
-
 
 # Parsec
 alias ssh-parsec='ssh -i ~/.ssh/wontae-ssh wontae@54.89.31.154'
