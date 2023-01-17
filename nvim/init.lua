@@ -70,7 +70,7 @@ cmp.setup({
 -- manage LSP server installation
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "clangd", "gopls", "zls", "sumneko_lua" }
+    ensure_installed = { "clangd", "gopls", "sumneko_lua" }
 })
 
 -- LSP custom keys
@@ -87,9 +87,12 @@ require('lspconfig')['gopls'].setup{
 require('lspconfig')['clangd'].setup{
   capabilities = capabilities,
 }
-require('lspconfig')['zls'].setup{
+require('lspconfig')['sumneko_lua'].setup{
   capabilities = capabilities,
 }
+-- require('lspconfig')['zls'].setup{
+--   capabilities = capabilities,
+-- }
 
 -- Treesitter setup
 require('nvim-treesitter.configs').setup {
