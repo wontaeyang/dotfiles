@@ -33,6 +33,7 @@ vim.opt.spell = true
 vim.opt.spelllang = 'en_us'
 vim.opt.splitbelow = true -- open horizontal split to bottom
 vim.opt.splitright = true -- open vertical split to right
+vim.opt.swapfile = false -- prevent swap files
 
 -- disable spell check in terminal
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
