@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'mhartington/oceanic-next'
 Plug 'dracula/vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'EdenEast/nightfox.nvim'
 
 " Tabline
 Plug 'romgrk/barbar.nvim'
@@ -34,6 +35,7 @@ Plug 'hrsh7th/nvim-cmp'
 
 " Language specific
 Plug 'fatih/vim-go'
+" Plug 'ray-x/go.nvim'
 Plug 'ziglang/zig.vim'
 Plug 'rhysd/vim-clang-format'
 

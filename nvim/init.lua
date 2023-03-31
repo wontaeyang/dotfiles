@@ -2,7 +2,7 @@
 vim.cmd [[
   source ~/.config/nvim/plugins.vim
   syntax enable
-  colorscheme nord
+  colorscheme nordfox
 ]]
 
 local map = vim.api.nvim_set_keymap
