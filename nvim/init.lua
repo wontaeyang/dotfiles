@@ -70,7 +70,7 @@ cmp.setup({
 -- manage LSP server installation
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "clangd", "gopls", "sumneko_lua" }
+    ensure_installed = { "clangd", "gopls", "lua_ls", "terraformls" }
 })
 
 -- LSP custom keys
@@ -87,7 +87,10 @@ require('lspconfig')['gopls'].setup{
 require('lspconfig')['clangd'].setup{
   capabilities = capabilities,
 }
-require('lspconfig')['sumneko_lua'].setup{
+require('lspconfig')['lua_ls'].setup{
+  capabilities = capabilities,
+}
+require('lspconfig')['terraformls'].setup{
   capabilities = capabilities,
 }
 -- require('lspconfig')['zls'].setup{
@@ -126,14 +129,15 @@ require'bufferline'.setup {
   animation = false, -- disable animation
   auto_hide = false, -- auto-hide single buffer
   tabpages = false, -- enable tab pages count
-  closable = false, -- disable close button
-  icons = 'numbers', -- display tab numbers
+  icons = {
+    button = '',
+    buffer_index = true,
+    filetype = { enabled = false },
+  },
   maximum_padding = 1,
   maximum_length = 30,
   semantic_letters = false,
   no_name_title = "New Buffer",
-  icon_separator_active = '',
-  icon_separator_inactive = '',
 }
 map('n', '<leader>1', '<Cmd>BufferGoto 1<CR>', opts)
 map('n', '<leader>2', '<Cmd>BufferGoto 2<CR>', opts)
@@ -226,6 +230,12 @@ vim.cmd [[
     execute ":split | terminal env $(cat test/test.env | xargs) go test -bench=. -v " . KesselTestModuleName() . " -testify.m " . KesselTestFuncName()
   endfunction
 ]]
+
+-- terraform format
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = {"*.tf", "*.tfvars"},
+  callback = vim.lsp.buf.format,
+})
 
 -- Remove all trailing white spaces on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
