@@ -81,19 +81,17 @@ map('n', '<space>q', 'vim.diagnostic.setloclist', opts)
 
 -- LSP languages
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig')['gopls'].setup{
+local lspconfig = require('lspconfig')
+lspconfig.gopls.setup{
   capabilities = capabilities,
 }
-require('lspconfig')['clangd'].setup{
+lspconfig.lua_ls.setup{
   capabilities = capabilities,
 }
-require('lspconfig')['lua_ls'].setup{
+lspconfig.terraformls.setup{
   capabilities = capabilities,
 }
-require('lspconfig')['terraformls'].setup{
-  capabilities = capabilities,
-}
-require('lspconfig')['rust_analyzer'].setup{
+lspconfig.rust_analyzer.setup{
   capabilities = capabilities,
 }
 -- require('lspconfig')['zls'].setup{
@@ -191,6 +189,16 @@ map('x', 'p', '"_dP', {})
 -- edit command with current folders populated
 map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', {})
 
+-- Rust format
+vim.g.rustfmt_autosave = 1
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "rs" },
+  callback = function()
+    map('n', 'gD', vim.lsp.buf.declaration, opts)
+    map('n', 'gd', vim.lsp.buf.definition, opts)
+  end,
+})
+
 -- Zig autoformat
 vim.g.zig_fmt_autosave = true
 
@@ -236,9 +244,6 @@ vim.cmd [[
     execute ":split | terminal env $(cat test/test.env | xargs) go test -bench=. -v " . KesselTestModuleName() . " -testify.m " . KesselTestFuncName()
   endfunction
 ]]
-
--- Rust format
-vim.g.rustfmt_autosave = 1
 
 -- terraform format
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
