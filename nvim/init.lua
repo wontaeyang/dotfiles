@@ -70,7 +70,7 @@ cmp.setup({
 -- manage LSP server installation
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "clangd", "gopls", "lua_ls", "terraformls" }
+    ensure_installed = { "clangd", "gopls", "lua_ls", "terraformls", "pylsp", "rust_analyzer" }
 })
 
 -- LSP custom keys
@@ -91,6 +91,9 @@ require('lspconfig')['lua_ls'].setup{
   capabilities = capabilities,
 }
 require('lspconfig')['terraformls'].setup{
+  capabilities = capabilities,
+}
+require('lspconfig')['rust_analyzer'].setup{
   capabilities = capabilities,
 }
 -- require('lspconfig')['zls'].setup{
@@ -114,10 +117,13 @@ require('nvim-treesitter.configs').setup {
     "typescript",
     "dockerfile",
     "yaml",
+    "rust",
   },
+  sync_install = false,
   auto_install = true,
   highlight = {
     enable = true,
+    disable = { "rust" },
   },
   indent = {
     enable = false,
@@ -230,6 +236,9 @@ vim.cmd [[
     execute ":split | terminal env $(cat test/test.env | xargs) go test -bench=. -v " . KesselTestModuleName() . " -testify.m " . KesselTestFuncName()
   endfunction
 ]]
+
+-- Rust format
+vim.g.rustfmt_autosave = 1
 
 -- terraform format
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {

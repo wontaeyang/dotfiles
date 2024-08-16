@@ -38,6 +38,7 @@ Plug 'fatih/vim-go'
 " Plug 'ray-x/go.nvim'
 Plug 'ziglang/zig.vim'
 Plug 'rhysd/vim-clang-format'
+Plug 'rust-lang/rust.vim'
 
 " Files
 Plug 'tpope/vim-eunuch' " convenient deleting moving and renameing files
