@@ -53,5 +53,6 @@ Plug 'AndrewRadev/splitjoin.vim' " auto break block of code (hash & etc..)
 " Utilities
 Plug 'tpope/vim-fugitive' " amazing git wrapper for vim
 Plug 'tpope/vim-dotenv' " read env files
+Plug 'kdheepak/lazygit.nvim'
 
 call plug#end()
