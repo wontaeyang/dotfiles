@@ -172,9 +172,6 @@ map('t', '<C-l>', '<C-\\><C-n><C-w>l', opts)
 map('n', '<Tab>', '<Cmd>BufferNext<CR>', opts)
 map('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts)
 
--- LazyGit
-map('n', '<leader>g', ':LazyGit<CR>', opts)
-
 -- Vim test
 vim.g['test#strategy'] = 'neovim'
 map('n', '<leader>t', ':TestNearest<CR>', opts)
