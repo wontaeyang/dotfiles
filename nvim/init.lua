@@ -29,11 +29,11 @@ vim.opt.autoindent = true                   -- enable auto indentation
 vim.opt.copyindent = true                   -- copy previous indentation on autocomplete
 vim.opt.termguicolors = true                -- enable better colors on terminal
 vim.opt.iskeyword:append("-")               -- consider dashed string as one word
-vim.opt.spell = true
-vim.opt.spelllang = 'en_us'
-vim.opt.splitbelow = true -- open horizontal split to bottom
-vim.opt.splitright = true -- open vertical split to right
-vim.opt.swapfile = false  -- prevent swap files
+vim.opt.spell = true                        -- turn on spell check
+vim.opt.spelllang = 'en_us'                 -- set spell check language
+vim.opt.splitbelow = true                   -- open horizontal split to bottom
+vim.opt.splitright = true                   -- open vertical split to right
+vim.opt.swapfile = false                    -- prevent swap files
 
 -- disable spell check in terminal
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
