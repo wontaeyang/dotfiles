@@ -70,7 +70,7 @@ cmp.setup({
 -- manage LSP server installation
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "clangd", "gopls", "lua_ls", "terraformls", "yamlls" }
+  ensure_installed = { "clangd", "gopls", "lua_ls", "terraformls", "yamlls", "rust_analyzer" }
 })
 
 -- LSP custom keys
@@ -81,23 +81,26 @@ map('n', '<space>q', 'vim.diagnostic.setloclist', opts)
 
 -- LSP languages
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig').gopls.setup {
+local lspconfig = require('lspconfig')
+lspconfig.clangd.setup {
   capabilities = capabilities,
 }
-require('lspconfig').clangd.setup {
+lspconfig.gopls.setup{
   capabilities = capabilities,
 }
-require('lspconfig').lua_ls.setup {
+lspconfig.lua_ls.setup{
   capabilities = capabilities,
 }
-require('lspconfig').terraformls.setup {
+lspconfig.terraformls.setup{
   capabilities = capabilities,
 }
-require('lspconfig').yamlls.setup {
+lspconfig.rust_analyzer.setup{
+  capabilities = capabilities,
+}
+lspconfig.yamlls.setup {
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = true
   end,
-  capabilities = capabilities,
 }
 -- require('lspconfig')['zls'].setup{
 --   capabilities = capabilities,
@@ -120,10 +123,13 @@ require('nvim-treesitter.configs').setup {
     "typescript",
     "dockerfile",
     "yaml",
+    "rust",
   },
+  sync_install = false,
   auto_install = true,
   highlight = {
     enable = true,
+    disable = { "rust" },
   },
   indent = {
     enable = false,
@@ -191,6 +197,18 @@ map('x', 'p', '"_dP', {})
 
 -- edit command with current folders populated
 map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', {})
+
+-- Rust settings
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "rs" },
+  callback = function()
+    map('n', 'gD', vim.lsp.buf.declaration, opts)
+    map('n', 'gd', vim.lsp.buf.definition, opts)
+  end,
+})
+
+-- Zig autoformat
+vim.g.zig_fmt_autosave = true
 
 -- Golang setup
 function DebugPrintSelected()

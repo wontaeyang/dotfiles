@@ -47,3 +47,7 @@ env
 TracerMiddleware
 machineID
 transactional
+SHA256
+sha256
+backfill
+SecretKey
