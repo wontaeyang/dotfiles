@@ -40,6 +40,9 @@ Plug 'ziglang/zig.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'rust-lang/rust.vim'
 
+" Formatter
+Plug 'stevearc/conform.nvim'
+
 " Files
 Plug 'tpope/vim-eunuch' " convenient deleting moving and renameing files
 Plug 'pbrisbin/vim-mkdir'  " automatically create directories when editing a new file

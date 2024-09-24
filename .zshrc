@@ -10,6 +10,7 @@ export VISUAL="nvim"
 alias dotfiles='cd ~/development/dotfiles'
 alias kessel='cd ~/development/parsec/kessel'
 alias infra='cd ~/development/parsec/infra'
+alias hpr='cd ~/development/parsec/go-hpr-service'
 
 # up 'n' folders
 alias ..='cd ..'
@@ -44,3 +45,5 @@ export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export CGO_CPPFLAGS="-Wno-error -Wno-nullability-completeness -Wno-expansion-to-defined -Wno-builtin-requires-header"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
