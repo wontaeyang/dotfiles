@@ -5,35 +5,35 @@ vim.cmd [[
   colorscheme nordfox
 ]]
 
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-vim.g.mapleader = ' ' -- Set space for leader
-vim.opt.encoding = 'utf-8' -- set default encoding
-vim.opt.wildmenu = true -- enhanced command line completion=
+vim.g.mapleader = ' '                       -- Set space for leader
+vim.opt.encoding = 'utf-8'                  -- set default encoding
+vim.opt.wildmenu = true                     -- enhanced command line completion=
 vim.opt.wildmode = 'list:longest,list:full' -- tab completion preview settings
-vim.opt.wrap = false -- prevent wrap
-vim.opt.list = true -- enable list mode, show white spaces
+vim.opt.wrap = false                        -- prevent wrap
+vim.opt.list = true                         -- enable list mode, show white spaces
 vim.opt.listchars = 'tab:»·,trail:·,nbsp:·' -- custom characters for white spaces
-vim.opt.clipboard = 'unnamedplus'  -- use clipboard for yank and paste
-vim.opt.ignorecase = true -- case insensitive search
-vim.opt.smartcase = true -- ignore insensitive search if first letter is uppercase
-vim.opt.paste = false -- disable paste aid
-vim.opt.cursorline = true -- highlight current row
-vim.opt.number = true -- display current line number
-vim.opt.tabstop = 2 -- tab is two spaces
-vim.opt.shiftwidth = 2 -- number of spaces to user for indentation
-vim.opt.shiftround = true -- round indent to multiples of shiftwidth
-vim.opt.expandtab = true -- Use the appropriate number of spaces to insert a tab
-vim.opt.autoindent = true -- enable auto indentation
-vim.opt.copyindent = true -- copy previous indentation on autocomplete
-vim.opt.termguicolors = true -- enable better colors on terminal
-vim.opt.iskeyword:append("-") -- consider dashed string as one word
+vim.opt.clipboard = 'unnamedplus'           -- use clipboard for yank and paste
+vim.opt.ignorecase = true                   -- case insensitive search
+vim.opt.smartcase = true                    -- ignore insensitive search if first letter is uppercase
+vim.opt.paste = false                       -- disable paste aid
+vim.opt.cursorline = true                   -- highlight current row
+vim.opt.number = true                       -- display current line number
+vim.opt.tabstop = 2                         -- tab is two spaces
+vim.opt.shiftwidth = 2                      -- number of spaces to user for indentation
+vim.opt.shiftround = true                   -- round indent to multiples of shiftwidth
+vim.opt.expandtab = true                    -- Use the appropriate number of spaces to insert a tab
+vim.opt.autoindent = true                   -- enable auto indentation
+vim.opt.copyindent = true                   -- copy previous indentation on autocomplete
+vim.opt.termguicolors = true                -- enable better colors on terminal
+vim.opt.iskeyword:append("-")               -- consider dashed string as one word
 vim.opt.spell = true
 vim.opt.spelllang = 'en_us'
 vim.opt.splitbelow = true -- open horizontal split to bottom
 vim.opt.splitright = true -- open vertical split to right
-vim.opt.swapfile = false -- prevent swap files
+vim.opt.swapfile = false  -- prevent swap files
 
 -- disable spell check in terminal
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
@@ -44,11 +44,11 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 
 -- setup code completion
 vim.opt.completeopt = 'menu,menuone,noselect'
-local cmp = require'cmp'
+local cmp = require 'cmp'
 cmp.setup({
   snippet = {
     expand = function(args)
-     require('luasnip').lsp_expand(args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({
@@ -70,7 +70,7 @@ cmp.setup({
 -- manage LSP server installation
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "clangd", "gopls", "lua_ls", "terraformls" }
+  ensure_installed = { "clangd", "gopls", "lua_ls", "terraformls", "yamlls" }
 })
 
 -- LSP custom keys
@@ -81,16 +81,22 @@ map('n', '<space>q', 'vim.diagnostic.setloclist', opts)
 
 -- LSP languages
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig')['gopls'].setup{
+require('lspconfig').gopls.setup {
   capabilities = capabilities,
 }
-require('lspconfig')['clangd'].setup{
+require('lspconfig').clangd.setup {
   capabilities = capabilities,
 }
-require('lspconfig')['lua_ls'].setup{
+require('lspconfig').lua_ls.setup {
   capabilities = capabilities,
 }
-require('lspconfig')['terraformls'].setup{
+require('lspconfig').terraformls.setup {
+  capabilities = capabilities,
+}
+require('lspconfig').yamlls.setup {
+  on_attach = function(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = true
+  end,
   capabilities = capabilities,
 }
 -- require('lspconfig')['zls'].setup{
@@ -125,10 +131,10 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- BarBar tabline keymaps
-require'bufferline'.setup {
+require 'bufferline'.setup {
   animation = false, -- disable animation
   auto_hide = false, -- auto-hide single buffer
-  tabpages = false, -- enable tab pages count
+  tabpages = false,  -- enable tab pages count
   icons = {
     button = '',
     buffer_index = true,
@@ -176,7 +182,8 @@ map('n', '<leader>l', ':TestLast<CR>', opts)
 
 -- FZF Setup using ripgrep
 map('n', '<C-t>', '<Cmd>FZF<CR>', opts)
-vim.env.FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow --ignore-case -g "!{.git,node_modules}/*" 2> /dev/null'
+vim.env.FZF_DEFAULT_COMMAND =
+'rg --files --no-ignore --hidden --follow --ignore-case -g "!{.git,node_modules}/*" 2> /dev/null'
 vim.g.fzf_layout = { ['window'] = '-tabnew' }
 
 -- Adjust paste to not yank
@@ -185,10 +192,24 @@ map('x', 'p', '"_dP', {})
 -- edit command with current folders populated
 map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', {})
 
--- Zig autoformat
-vim.g.zig_fmt_autosave = true
-
 -- Golang setup
+function DebugPrintSelected()
+  return function()
+    local selected_text = vim.fn.getreg("")
+    vim.fn.feedkeys('o')
+    vim.fn.feedkeys('fmt.Printf("DEBUG: %v\\n", ')
+    vim.fn.feedkeys(')')
+    vim.api.nvim_input('<Left>')
+  end
+end
+
+function go_test_with_env(test_command)
+  return function()
+    vim.cmd('Dotenv test/test.env')
+    vim.cmd(test_command)
+  end
+end
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "go" },
   callback = function()
@@ -196,45 +217,35 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.opt.expandtab = false
     map('n', 'gd', ':GoDef<CR>', opts)
     map('n', 'gt', ':GoDefPop<CR>', opts)
-    map('n', '<leader>t', ':call KesselTestFunc()<CR>', opts)
+    map('n', '<leader>t', go_test_with_env("TestNearest"), opts)
+    map('n', '<leader>a', go_test_with_env("TestFile"), opts)
+    map('n', '<leader>l', go_test_with_env("TestLast"), opts)
+    map('n', '<leader>d', DebugPrintSelected(), opts)
   end,
 })
-vim.g.go_fmt_autosave = true
-vim.g.go_fmt_command = "gopls"
+
 vim.g.go_def_mapping_enabled = true
 vim.g.go_auto_type_info = true
-vim.g.go_def_mode='gopls'
-vim.g.go_info_mode='gopls'
+vim.g.go_def_mode = 'gopls'
+vim.g.go_info_mode = 'gopls'
 vim.g.go_term_enabled = 'split'
 vim.g.go_doc_keywordprg_enabled = false
 vim.g.go_def_mapping_enabled = false -- remap some vim-go key bindings to prevent colliding with FZF
 
--- Parsec Kessel test runner for testify suite
-vim.cmd [[
-  function! KesselTestFuncName()
-    let test_func = search('func ', "bcnW")
-    if test_func == 0
-      echo "No test found immediate to cursor"
-      return
-    end
-    let line = getline(test_func)
-    return matchstr(line, ' Test\w\+')[1:-1]
-  endfunction
-  function! KesselTestModuleName()
-    let file_path = expand('%:p:h')
-    let start_pos = match(file_path, 'kessel')
-    let end_pos = len(file_path)
-    return file_path[start_pos:end_pos]
-  endfunction
-  function! KesselTestFunc()
-    execute ":split | terminal env $(cat test/test.env | xargs) go test -bench=. -v " . KesselTestModuleName() . " -testify.m " . KesselTestFuncName()
-  endfunction
-]]
+require("conform").setup({
+  formatters_by_ft = {
+    go = { "gopls" },
+    zig = { "zigfmt" },
+    rust = { "rustfmt" },
+    yaml = { "yamlls" },
+  },
+})
 
--- terraform format
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = {"*.tf", "*.tfvars"},
-  callback = vim.lsp.buf.format,
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    require("conform").format({ lsp_fallback = true })
+  end,
 })
 
 -- Remove all trailing white spaces on save
