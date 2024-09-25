@@ -85,16 +85,16 @@ local lspconfig = require('lspconfig')
 lspconfig.clangd.setup {
   capabilities = capabilities,
 }
-lspconfig.gopls.setup{
+lspconfig.gopls.setup {
   capabilities = capabilities,
 }
-lspconfig.lua_ls.setup{
+lspconfig.lua_ls.setup {
   capabilities = capabilities,
 }
-lspconfig.terraformls.setup{
+lspconfig.terraformls.setup {
   capabilities = capabilities,
 }
-lspconfig.rust_analyzer.setup{
+lspconfig.rust_analyzer.setup {
   capabilities = capabilities,
 }
 lspconfig.yamlls.setup {
@@ -249,6 +249,42 @@ vim.g.go_info_mode = 'gopls'
 vim.g.go_term_enabled = 'split'
 vim.g.go_doc_keywordprg_enabled = false
 vim.g.go_def_mapping_enabled = false -- remap some vim-go key bindings to prevent colliding with FZF
+
+
+-- Lazygit
+require("toggleterm").setup({
+  open_mapping = [[<leader>k]],
+  hide_humbers = true,
+  start_in_insert = true,
+  insert_mappings = true,
+  direction = "float",
+  auto_scroll = true,
+  close_on_exit = true,
+  float_opts = {
+    border = "curved",
+  },
+})
+
+local Terminal = require('toggleterm.terminal').Terminal
+local lazygit  = Terminal:new({
+  cmd = "lazygit",
+  dir = "git_dir",
+  direction = "float",
+  close_on_exit = true,
+  hidden = true,
+  float_opts = {
+    border = "curved",
+  },
+})
+
+local function lazygit_toggle()
+  return function()
+    lazygit:toggle()
+  end
+end
+
+map("n", "<leader>l", lazygit_toggle(), opts)
+
 
 require("conform").setup({
   formatters_by_ft = {

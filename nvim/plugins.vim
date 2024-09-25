@@ -18,8 +18,9 @@ Plug 'janko-m/vim-test'
 
 " Helpers
 Plug 'airblade/vim-gitgutter'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'L3MON4D3/LuaSnip'
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
 " LSP
 Plug 'neovim/nvim-lsp'
@@ -35,7 +36,6 @@ Plug 'hrsh7th/nvim-cmp'
 
 " Language specific
 Plug 'fatih/vim-go'
-" Plug 'ray-x/go.nvim'
 Plug 'ziglang/zig.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'rust-lang/rust.vim'
