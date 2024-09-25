@@ -187,6 +187,7 @@ map('n', '<leader>a', ':TestFile<CR>', opts)
 map('n', '<leader>l', ':TestLast<CR>', opts)
 
 -- FZF Setup using ripgrep
+map('n', '<C-r>', '<Cmd>Rg<CR>', opts)
 map('n', '<C-t>', '<Cmd>FZF<CR>', opts)
 vim.env.FZF_DEFAULT_COMMAND =
 'rg --files --no-ignore --hidden --follow --ignore-case -g "!{.git,node_modules}/*" 2> /dev/null'
