@@ -41,6 +41,23 @@ vim.opt.swapfile = false                    -- prevent swap files
 map('x', 'p', '"_dP', {})                                        -- Adjust paste to not yank
 map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', {}) -- edit command with current folders populated
 
+-- quicker window movement
+map('n', '<C-h>', '<C-w>h', opts)
+map('n', '<C-j>', '<C-w>j', opts)
+map('n', '<C-k>', '<C-w>k', opts)
+map('n', '<C-l>', '<C-w>l', opts)
+map('t', '<Esc>', '<C-\\><C-n>', opts)
+
+-- terminal window movement
+map('t', '<C-h>', '<C-\\><C-n><C-w>h', opts)
+map('t', '<C-j>', '<C-\\><C-n><C-w>j', opts)
+map('t', '<C-k>', '<C-\\><C-n><C-w>k', opts)
+map('t', '<C-l>', '<C-\\><C-n><C-w>l', opts)
+
+-- buffer movement
+map('n', '<Tab>', '<Cmd>BufferNext<CR>', opts)
+map('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts)
+
 -- disable spell check in terminal
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
   callback = function()
@@ -175,23 +192,6 @@ map('n', '<leader>9', '<Cmd>BufferGoto 9<CR>', opts)
 map('n', '<leader>0', '<Cmd>BufferLast<CR>', opts)
 -- map('n', '<leader>p', '<Cmd>BufferPick<CR>', opts)
 
--- quicker window movement
-map('n', '<C-h>', '<C-w>h', opts)
-map('n', '<C-j>', '<C-w>j', opts)
-map('n', '<C-k>', '<C-w>k', opts)
-map('n', '<C-l>', '<C-w>l', opts)
-map('t', '<Esc>', '<C-\\><C-n>', opts)
-
--- terminal window movement
-map('t', '<C-h>', '<C-\\><C-n><C-w>h', opts)
-map('t', '<C-j>', '<C-\\><C-n><C-w>j', opts)
-map('t', '<C-k>', '<C-\\><C-n><C-w>k', opts)
-map('t', '<C-l>', '<C-\\><C-n><C-w>l', opts)
-
--- buffer movement
-map('n', '<Tab>', '<Cmd>BufferNext<CR>', opts)
-map('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts)
-
 -- Vim test
 vim.g['test#strategy'] = 'neovim'
 map('n', '<leader>t', ':TestNearest<CR>', opts)
@@ -257,8 +257,7 @@ vim.g.go_term_enabled = 'split'
 vim.g.go_doc_keywordprg_enabled = false
 vim.g.go_def_mapping_enabled = false -- remap some vim-go key bindings to prevent colliding with FZF
 
-
--- Lazygit
+-- ToggleTerm
 require("toggleterm").setup({
   open_mapping = [[<leader>k]],
   hide_humbers = true,
@@ -272,6 +271,7 @@ require("toggleterm").setup({
   },
 })
 
+-- Lazygit
 local Terminal = require('toggleterm.terminal').Terminal
 local lazygit  = Terminal:new({
   cmd = "lazygit",
