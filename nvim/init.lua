@@ -37,6 +37,10 @@ vim.opt.splitbelow = true                   -- open horizontal split to bottom
 vim.opt.splitright = true                   -- open vertical split to right
 vim.opt.swapfile = false                    -- prevent swap files
 
+-- Base mappings
+map('x', 'p', '"_dP', {})                                        -- Adjust paste to not yank
+map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', {}) -- edit command with current folders populated
+
 -- disable spell check in terminal
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
   callback = function()
@@ -46,7 +50,7 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 
 -- setup code completion
 vim.opt.completeopt = 'menu,menuone,noselect'
-local cmp = require 'cmp'
+local cmp = require('cmp')
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -84,12 +88,12 @@ map('n', '<space>q', 'vim.diagnostic.setloclist', opts)
 -- LSP languages
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
-lspconfig.clangd.setup {
+lspconfig.clangd.setup({
   capabilities = capabilities,
-}
-lspconfig.gopls.setup {
+})
+lspconfig.gopls.setup({
   capabilities = capabilities,
-}
+})
 lspconfig.lua_ls.setup({
   settings = {
     Lua = {
@@ -99,23 +103,23 @@ lspconfig.lua_ls.setup({
     }
   }
 })
-lspconfig.terraformls.setup {
+lspconfig.terraformls.setup({
   capabilities = capabilities,
-}
-lspconfig.rust_analyzer.setup {
+})
+lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
-}
-lspconfig.yamlls.setup {
+})
+lspconfig.yamlls.setup({
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = true
   end,
-}
--- require('lspconfig')['zls'].setup{
+})
+-- require('lspconfig')['zls'].setup({
 --   capabilities = capabilities,
--- }
+-- })
 
 -- Treesitter setup
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
   ensure_installed = {
     "go",
     "c",
@@ -142,10 +146,10 @@ require('nvim-treesitter.configs').setup {
   indent = {
     enable = false,
   }
-}
+})
 
 -- BarBar tabline keymaps
-require 'bufferline'.setup {
+require('bufferline').setup {
   animation = false, -- disable animation
   auto_hide = false, -- auto-hide single buffer
   tabpages = false,  -- enable tab pages count
@@ -200,12 +204,6 @@ map('n', '<C-t>', '<Cmd>FZF<CR>', opts)
 vim.env.FZF_DEFAULT_COMMAND =
 'rg --files --no-ignore --hidden --follow --ignore-case -g "!{.git,node_modules}/*" 2> /dev/null'
 vim.g.fzf_layout = { ['window'] = '-tabnew' }
-
--- Adjust paste to not yank
-map('x', 'p', '"_dP', {})
-
--- edit command with current folders populated
-map('n', '<leader>e', ':e <C-R>=expand("%:p:h") . "/" <CR>', {})
 
 -- Rust settings
 vim.api.nvim_create_autocmd({ "FileType" }, {
