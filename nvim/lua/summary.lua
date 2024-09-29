@@ -1,10 +1,19 @@
 require("aerial").setup({
-  backends = { "treesitter", "lsp", "man" },
+  backends = { "lsp", "treesitter", "man" },
+  filter_kind = {
+    "Function",
+    "Method",
+    "Struct",
+    "Field",
+    "Variable",
+    "Constant",
+  },
   layout = {
-    max_width = { 80, .33 },
+    max_width = { 100, .4 },
     min_width = 32,
     default_direction = "prefer_left",
     placement = "edge",
+    resize_to_content = true,
   },
   show_guides = true,
   guides = {
