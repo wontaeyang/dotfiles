@@ -4,7 +4,7 @@
 vim.cmd [[
   source ~/.config/nvim/plugins.vim
   syntax enable
-  colorscheme monochrome
+  colorscheme lackluster
 ]]
 
 local map = vim.keymap.set

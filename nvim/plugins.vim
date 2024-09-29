@@ -5,11 +5,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'dracula/vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'EdenEast/nightfox.nvim'
-
-" Monochrome colors
-Plug 'aditya-azad/candle-grey'
-Plug 'Lokaltog/vim-monotone'
-Plug 'fxn/vim-monochrome'
+Plug 'slugbyte/lackluster.nvim'
 
 " Tabline
 Plug 'romgrk/barbar.nvim'
@@ -49,7 +45,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'stevearc/conform.nvim'
 
 " Files
-Plug 'tpope/vim-eunuch' " convenient deleting moving and renameing files
+Plug 'tpope/vim-eunuch' " convenient deleting moving and renaming files
 Plug 'pbrisbin/vim-mkdir'  " automatically create directories when editing a new file
 
 " Editing
