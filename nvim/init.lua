@@ -90,9 +90,15 @@ lspconfig.clangd.setup {
 lspconfig.gopls.setup {
   capabilities = capabilities,
 }
-lspconfig.lua_ls.setup {
-  capabilities = capabilities,
-}
+lspconfig.lua_ls.setup({
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  }
+})
 lspconfig.terraformls.setup {
   capabilities = capabilities,
 }
