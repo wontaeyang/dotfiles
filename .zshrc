@@ -45,5 +45,11 @@ export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export CGO_CPPFLAGS="-Wno-error -Wno-nullability-completeness -Wno-expansion-to-defined -Wno-builtin-requires-header"
 
+# Bind CTRL-Z to foreground command
+fg_command() {
+  fg
+}
+zle -N fg_command
+bindkey '^Z' fg_command
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

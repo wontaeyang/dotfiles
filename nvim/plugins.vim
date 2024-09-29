@@ -6,6 +6,11 @@ Plug 'dracula/vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'EdenEast/nightfox.nvim'
 
+" Monochrome colors
+Plug 'aditya-azad/candle-grey'
+Plug 'Lokaltog/vim-monotone'
+Plug 'fxn/vim-monochrome'
+
 " Tabline
 Plug 'romgrk/barbar.nvim'
 

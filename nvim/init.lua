@@ -1,8 +1,10 @@
 -- some things gotta run on vim script
+-- colorscheme nordfox
+
 vim.cmd [[
   source ~/.config/nvim/plugins.vim
   syntax enable
-  colorscheme nordfox
+  colorscheme monochrome
 ]]
 
 local map = vim.keymap.set
