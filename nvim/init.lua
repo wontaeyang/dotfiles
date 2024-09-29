@@ -60,7 +60,6 @@ map('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts)
 vim.g['test#strategy'] = 'neovim'
 map('n', '<leader>t', ':TestNearest<CR>', opts)
 map('n', '<leader>a', ':TestFile<CR>', opts)
-map('n', '<leader>l', ':TestLast<CR>', opts)
 
 -- disable spell check in terminal
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
@@ -84,3 +83,4 @@ require('tabs')
 require('term')
 require('format')
 require('fzf')
+require('summary')

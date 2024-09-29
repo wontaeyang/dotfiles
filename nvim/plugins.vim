@@ -7,7 +7,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'slugbyte/lackluster.nvim'
 
-" Tabline
+" UI
 Plug 'romgrk/barbar.nvim'
 
 " Search
@@ -22,6 +22,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'L3MON4D3/LuaSnip'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'stevearc/aerial.nvim'
 
 " LSP
 Plug 'neovim/nvim-lsp'

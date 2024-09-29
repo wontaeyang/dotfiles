@@ -24,7 +24,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     map('n', 'gt', ':GoDefPop<CR>', opts)
     map('n', '<leader>t', go_test_with_env("TestNearest"), opts)
     map('n', '<leader>a', go_test_with_env("TestFile"), opts)
-    map('n', '<leader>l', go_test_with_env("TestLast"), opts)
     map('n', '<leader>d', DebugPrintSelected(), opts)
   end,
 })
