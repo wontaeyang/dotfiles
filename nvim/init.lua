@@ -1,7 +1,6 @@
 vim.cmd [[
   source ~/.config/nvim/plugins.vim
   syntax enable
-  colorscheme lackluster
 ]]
 
 map = vim.keymap.set
@@ -74,6 +73,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   command = [[%s/\s\+$//e]],
 })
 
+require('theme')
 require('golang')
 require('rust')
 require('completion')
