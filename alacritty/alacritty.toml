@@ -1,0 +1,15 @@
+live_config_reload = true
+working_directory = "/Users/wontae.yang/development/parsec/kessel"
+
+import = [
+    "~/.config/alacritty/themes/themes/iterm.toml"
+]
+
+[env]
+TERM= "alacritty"
+
+[font]
+size = 16.0
+
+[font.normal]
+family = "Comic Code"
