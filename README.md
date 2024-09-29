@@ -14,6 +14,8 @@
 
 6. symlink zshrc `ln -s ~/development/dotfiles/.zshrc ~/.zshrc`
 
+7. symlink zellij `ln -s ~/development/dotfiles/zellij ~/.config/zellij`
+
 7. install vim-plug if vim plug is not in repo
 
 ```
