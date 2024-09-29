@@ -1,5 +1,5 @@
-live_config_reload = true
-working_directory = "/Users/wontae.yang/development/parsec/kessel"
+# live_config_reload = true
+working_directory = "/Users/wontaeyang/development/projects"
 
 import = [
     "~/.config/alacritty/themes/themes/iterm.toml"
@@ -9,10 +9,11 @@ import = [
 option_as_alt = "Both"
 
 [env]
-TERM= "alacritty"
+TERM = "xterm-256color"
 
 [font]
-size = 16.0
+size = 18.0
 
 [font.normal]
 family = "Comic Code"
+style = "Regular"
