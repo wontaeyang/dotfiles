@@ -22,6 +22,9 @@ require("aerial").setup({
     nested_top = "│ ", -- When there are nested child guides to the right
     whitespace = "  ", -- Raw indentation
   },
+  open_automatic = false,
+  close_on_select = true,
+  autojump = true,
 })
 
-map("n", "<leader>o", "<cmd>AerialToggle!<CR>", opts)
+map("n", "<leader>o", "<cmd>AerialToggle<CR><C-h>", opts)

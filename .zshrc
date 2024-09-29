@@ -1,5 +1,4 @@
 # git commamands simplified
-alias gco='git checkout'
 
 # map Neovim to Vim
 alias vim='nvim'
@@ -11,6 +10,16 @@ alias dotfiles='cd ~/development/dotfiles'
 alias kessel='cd ~/development/parsec/kessel'
 alias infra='cd ~/development/parsec/infra'
 alias hpr='cd ~/development/parsec/go-hpr-service'
+
+# application alias
+alias z='zellij'
+alias l='lazygit'
+alias v='nvim'
+
+# git alias
+alias gp='git pull --rebase'
+alias gP='git push'
+alias gco='git checkout'
 
 # up 'n' folders
 alias ..='cd ..'
