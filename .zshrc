@@ -20,6 +20,7 @@ alias v='nvim'
 alias gp='git pull --rebase'
 alias gP='git push'
 alias gco='git checkout'
+alias gm='git merge'
 
 alias ls='ls -Gal'
 
