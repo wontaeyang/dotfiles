@@ -21,6 +21,8 @@ alias gp='git pull --rebase'
 alias gP='git push'
 alias gco='git checkout'
 
+alias ls='ls -Gal'
+
 # up 'n' folders
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -49,7 +51,6 @@ export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 export PATH=$PATH:/opt/homebrew/bin/zig
 
 # Parsec
-alias ssh-parsec='ssh -i ~/.ssh/wontae-ssh wontae@54.89.31.154'
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export CGO_CPPFLAGS="-Wno-error -Wno-nullability-completeness -Wno-expansion-to-defined -Wno-builtin-requires-header"
