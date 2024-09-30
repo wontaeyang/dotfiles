@@ -18,7 +18,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'janko-m/vim-test'
 
 " Helpers
-Plug 'airblade/vim-gitgutter'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'L3MON4D3/LuaSnip'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
@@ -56,6 +55,7 @@ Plug 'ConradIrwin/vim-bracketed-paste' "better pasting
 Plug 'AndrewRadev/splitjoin.vim' " auto break block of code (hash & etc..)
 
 " Utilities
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive' " amazing git wrapper for vim
 Plug 'tpope/vim-dotenv' " read env files
 

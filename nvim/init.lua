@@ -73,6 +73,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   command = [[%s/\s\+$//e]],
 })
 
+require('git')
 require('theme')
 require('golang')
 require('rust')
