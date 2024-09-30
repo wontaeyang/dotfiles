@@ -1,4 +1,3 @@
--- setup code completion
 local cmp = require('cmp')
 cmp.setup({
   snippet = {
