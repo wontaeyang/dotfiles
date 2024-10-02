@@ -10,6 +10,7 @@ alias dotfiles='cd ~/development/dotfiles'
 alias kessel='cd ~/development/parsec/kessel'
 alias infra='cd ~/development/parsec/infra'
 alias hpr='cd ~/development/parsec/go-hpr-service'
+alias mpi='ssh wontaeyang@montypi'
 
 # application alias
 alias z='zellij'
