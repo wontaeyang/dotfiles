@@ -23,7 +23,7 @@ alias gP='git push'
 alias gco='git checkout'
 alias gm='git merge'
 
-alias ls='ls -Gal'
+alias ls='ls -a'
 
 # up 'n' folders
 alias ..='cd ..'
