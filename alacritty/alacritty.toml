@@ -1,9 +1,3 @@
-# live_config_reload = true
-working_directory = "/Users/wontaeyang/development/projects"
-
-import = [
-    "~/.config/alacritty/themes/themes/iterm.toml"
-]
 
 [window]
 option_as_alt = "Both"
@@ -17,3 +11,11 @@ size = 18.0
 [font.normal]
 family = "Comic Code"
 style = "Regular"
+
+[general]
+# live_config_reload = true
+working_directory = "/Users/wontaeyang/development/projects"
+
+import = [
+    "~/.config/alacritty/themes/themes/iterm.toml"
+]

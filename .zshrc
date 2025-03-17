@@ -47,6 +47,7 @@ zstyle ':vcs_info:git:*' formats '%F{green}(%b)%f'
 PROMPT='%F{red}%2~%f$vcs_info_msg_0_ '
 
 # ENV Variables
+export TERM=xterm-256color
 export GOPATH=$HOME/development/go
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
