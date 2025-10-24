@@ -1,8 +1,8 @@
 require("toggleterm").setup({
   open_mapping = [[<leader>k]],
   hide_humbers = true,
-  start_in_insert = true,
-  insert_mappings = true,
+  start_in_insert = false,
+  insert_mappings = false,
   direction = "float",
   auto_scroll = true,
   close_on_exit = true,

@@ -7,15 +7,15 @@ export VISUAL="nvim"
 
 # folder aliases
 alias dotfiles='cd ~/development/dotfiles'
-alias kessel='cd ~/development/parsec/kessel'
-alias infra='cd ~/development/parsec/infra'
-alias hpr='cd ~/development/parsec/go-hpr-service'
+alias backend='cd ~/development/phaze/backend'
+alias infra='cd ~/development/phaze/infra'
 alias pi='ssh wontaeyang@montypi'
 
 # application alias
 alias z='zellij'
 alias l='lazygit'
 alias v='nvim'
+alias tf='terraform'
 
 # git alias
 alias gp='git pull --rebase'
@@ -65,4 +65,7 @@ fg_command() {
 zle -N fg_command
 bindkey '^Z' fg_command
 
+source <(fzf --zsh)
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"

@@ -5,6 +5,7 @@ require("mason-lspconfig").setup({
     "gopls",
     "lua_ls",
     "terraformls",
+    "tflint",
     "yamlls",
     "rust_analyzer",
   },
@@ -18,17 +19,21 @@ map('n', '<leader>q', vim.diagnostic.setloclist, opts)
 
 -- LSP languages
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
 
-lspconfig.clangd.setup({
+vim.lsp.config('clangd', {
   capabilities = capabilities,
 })
 
-lspconfig.gopls.setup({
+vim.lsp.config('gopls', {
   capabilities = capabilities,
+  settings = {
+    gopls = {
+      directoryFilters = { '+testdata' },
+    }
+  }
 })
 
-lspconfig.lua_ls.setup({
+vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
       diagnostics = {
@@ -38,20 +43,20 @@ lspconfig.lua_ls.setup({
   }
 })
 
-lspconfig.terraformls.setup({
+vim.lsp.config('terraformls', {
   capabilities = capabilities,
 })
 
-lspconfig.rust_analyzer.setup({
+vim.lsp.config('tflint', {
   capabilities = capabilities,
 })
 
-lspconfig.yamlls.setup({
+vim.lsp.config('rust_analyzer', {
+  capabilities = capabilities,
+})
+
+vim.lsp.config('yamlls', {
   on_attach = function(client, _)
     client.server_capabilities.documentFormattingProvider = true
   end,
 })
-
--- require('lspconfig')['zls'].setup({
---   capabilities = capabilities,
--- })

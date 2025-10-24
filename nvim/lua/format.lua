@@ -4,6 +4,8 @@ require("conform").setup({
     zig = { "zigfmt" },
     rust = { "rustfmt" },
     yaml = { "yamlls" },
+    terraform = { "terraform_fmt" },
+    tf = { "terraform_fmt" },
   },
 })
 
