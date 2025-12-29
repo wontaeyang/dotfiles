@@ -26,8 +26,8 @@ Plug 'stevearc/aerial.nvim'
 " LSP
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'mason-org/mason.nvim'
+Plug 'mason-org/mason-lspconfig.nvim'
 
 " Completion
 Plug 'hrsh7th/cmp-nvim-lsp'
