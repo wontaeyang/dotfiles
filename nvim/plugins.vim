@@ -18,7 +18,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'janko-m/vim-test'
 
 " Helpers
-Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master', 'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'L3MON4D3/LuaSnip'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'stevearc/aerial.nvim'
@@ -40,6 +40,7 @@ Plug 'fatih/vim-go'
 Plug 'ziglang/zig.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'rust-lang/rust.vim'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
 
 " Formatter
 Plug 'stevearc/conform.nvim'

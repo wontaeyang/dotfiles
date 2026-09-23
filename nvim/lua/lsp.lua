@@ -28,9 +28,9 @@ vim.lsp.config('gopls', {
   capabilities = capabilities,
   settings = {
     gopls = {
-      directoryFilters = { '+testdata' },
-    }
-  }
+      semanticTokens = false,
+    },
+  },
 })
 
 vim.lsp.config('lua_ls', {

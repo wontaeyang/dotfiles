@@ -9,6 +9,7 @@ export VISUAL="nvim"
 alias dotfiles='cd ~/development/dotfiles'
 alias backend='cd ~/development/phaze/backend'
 alias infra='cd ~/development/phaze/infra'
+alias phz='cd ~/development/phaze/phaze'
 alias pi='ssh wontaeyang@montypi'
 
 # application alias
@@ -16,6 +17,7 @@ alias z='zellij'
 alias l='lazygit'
 alias v='nvim'
 alias tf='terraform'
+alias cc='claude'
 
 # git alias
 alias gp='git pull --rebase'
@@ -53,11 +55,6 @@ export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 export PATH=$PATH:/opt/homebrew/bin/zig
 
-# Parsec
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-export CGO_CPPFLAGS="-Wno-error -Wno-nullability-completeness -Wno-expansion-to-defined -Wno-builtin-requires-header"
-
 # Bind CTRL-Z to foreground command
 fg_command() {
   fg
@@ -69,3 +66,4 @@ source <(fzf --zsh)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

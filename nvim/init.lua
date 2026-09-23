@@ -80,13 +80,15 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.lsp.set_log_level('off')
+
 require('git')
 require('theme')
 require('golang')
 require('rust')
 require('completion')
-require('lsp')
 require('treesitter')
+require('lsp')
 require('tabs')
 require('term')
 require('format')
